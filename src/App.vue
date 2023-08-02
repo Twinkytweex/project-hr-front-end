@@ -1,13 +1,13 @@
 <template>
 	<div>
 		<Header />
-		<Card />
+		<!-- <Card /> -->
 	</div>
 </template>
 
 <script setup>
 	import Header from './components/Header.vue';
-	import Card from './components/Card.vue';
+	// import Card from './components/Card.vue';
 </script>
 
 <style></style>
