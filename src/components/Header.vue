@@ -79,6 +79,7 @@
 					height: 40px;
 					border-radius: 30px;
 					padding: 15px 22px 15px 32px;
+					font-size: 12px;
 				}
 			}
 		}
