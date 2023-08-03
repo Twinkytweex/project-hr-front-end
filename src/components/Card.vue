@@ -47,26 +47,29 @@
 		display: flex;
 		justify-content: space-between;
 		padding-bottom: 8px;
+		.title {
+			color: #0063bf;
+			font-family: 'DejaVu Sans';
+			font-size: 18px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: normal;
+		}
 
 		div {
 			display: flex;
+			flex-wrap: wrap;
 			gap: 4px;
-			.title {
-				color: #0063bf;
-				font-family: DejaVu Sans;
-				font-size: 18px;
-				font-style: normal;
-				font-weight: 400;
-				line-height: normal;
-			}
+
 			.more {
 				font-size: 14px;
+				font-family: 'DejaVu Sans';
 			}
 		}
 	}
 	.card-date {
 		color: #65798a;
-		font-family: DejaVu Sans;
+		font-family: 'DejaVu Sans';
 		font-size: 14px;
 		font-style: normal;
 		font-weight: 400;
@@ -83,7 +86,7 @@
 		gap: 12px;
 		.card-location {
 			color: #6b1e6c;
-			font-family: Noto Sans Georgian;
+			font-family: 'Noto Sans Georgian';
 			font-size: 12px;
 			font-style: normal;
 			font-weight: 400;
@@ -97,7 +100,7 @@
 		}
 		.card-info {
 			color: #1a602e;
-			font-family: Noto Sans Georgian;
+			font-family: 'Noto Sans Georgian';
 			font-size: 12px;
 			font-style: normal;
 			font-weight: 400;
