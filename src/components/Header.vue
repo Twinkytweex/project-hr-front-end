@@ -1,87 +1,91 @@
 <template>
-	<div class="header-comp">
-		<img class="palitra-svg" :src="palitra" alt="" />
-		<div class="img-cont">
-			<div class="overlay"></div>
-			<img :src="mainImg" alt="" />
+	<div class="header-comp container">
+		<div class="header-logo">
+			<img class="palitra-svg" :src="palitra" alt="" />
+		</div>
+		<div class="header-body">
 			<div class="header-title">
-				<span class="header-info">დასაქმდი პალიტრა ჰოლდინგში, </span>
-
-				<span class="header-infos">
-					შემოუერთდი ჩვენს გუნდს და გახდი დიდი ოჯახის წევრი!</span
-				>
+				დასაქმდი პალიტრა ჰოლდინგში, <br />
+				შემოუერთდი ჩვენს გუნდს და გახდი დიდი ოჯახის წევრი!
 			</div>
+
 			<div class="input-cont">
 				<img :src="searchButton" alt="" />
-				<input type="text" name="" placeholder="ძიება " id="" />
+				<input type="text" name="" placeholder="" id="" />
 			</div>
 		</div>
 	</div>
 </template>
 
 <script setup>
-	import mainImg from '../assets/images/mainImg.svg';
-	import searchButton from '../assets/images/searchButton.svg';
-	import palitra from '../assets/logos/palitra.svg';
+	import searchButton from '@/assets/images/searchButton.svg';
+	import palitra from '@/assets/logos/palitra.svg';
 </script>
 
 <style lang="scss" scoped>
-	.header-comp {
-		width: 1440px;
-		margin: auto;
-		.palitra-svg {
-			margin-left: 80px;
-			margin-bottom: 20px;
-		}
-		.img-cont {
-			z-index: 0;
-			position: relative;
+	.header-logo {
+		padding: 20px 8px;
+	}
+
+	.header-body {
+		position: relative;
+		padding: 60px 30px;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 64px;
+		isolation: isolate;
+		margin-bottom: 55px;
+		background-image: url('@/assets/images/mainImg.svg');
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
 			width: 100%;
 			height: 100%;
-			.overlay {
-				width: 100%;
-				height: 100%;
-				position: absolute;
-				top: 0;
-				left: 0;
-				background: rgba(233, 245, 253, 0.92);
-			}
-			.header-title {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				.header-info {
-					position: absolute;
-					top: 20%;
-					font-size: 32px;
-					line-height: 0px;
-				}
-				.header-infos {
-					position: absolute;
-					top: 25%;
-					font-size: 32px;
-				}
-			}
+			background-color: rgba(233, 245, 253, 0.92);
+			transform: scaleX(20);
+		}
+	}
 
-			.input-cont {
-				position: absolute;
-				bottom: 65px;
-				right: 25%;
-				left: 25%;
-				// display: flex;
-				// align-items: center;
-				// justify-content: center;
+	.header-title {
+		color: #000;
+		text-align: center;
+		font-family: 'BPG Nino Mkhedruli Book';
+		font-size: 32px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 50px;
+	}
 
-				input {
-					border: none;
-					top: 80%;
-					width: 700px;
-					height: 40px;
-					border-radius: 30px;
-					padding: 15px 22px 15px 32px;
-					font-size: 12px;
-				}
+	.input-cont {
+		max-width: 920px;
+		width: 100%;
+		position: relative;
+
+		input {
+			box-sizing: border-box;
+			border: none;
+			width: 100%;
+			border-radius: 30px;
+			padding: 15px 58px 15px 32px;
+			font-size: 1.25rem;
+			outline: none;
+
+			&:focus,
+			&:hover {
+				box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.04);
 			}
+		}
+		img {
+			position: absolute;
+			margin: auto;
+			top: 0;
+			bottom: 0;
+			right: 8px;
 		}
 	}
 </style>
