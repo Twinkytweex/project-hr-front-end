@@ -11,6 +11,11 @@
 			</button>
 		</div>
 	</div>
+
+
+
+
+
 </template>
 
 <script setup>
@@ -24,11 +29,27 @@
 		justify-content: space-between;
 		position: relative;
 		isolation: isolate;
-		background: rgba(233, 245, 253, 0.92);
+
 		margin-top: 114px;
 		margin-bottom: 80px;
 		height: 165px;
 		padding: 0px 10px;
+
+
+		&::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: -1;
+			width: 100%;
+			height: 100%;
+			background: rgba(233, 245, 253, 0.92);
+			transform: scaleX(20);
+		}
+
+
+
 		@media only screen and (max-width: 600px) {
 			flex-direction: column;
 			padding: 24px;

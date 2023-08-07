@@ -34,12 +34,21 @@
 			</div>
 			<label class="forms-name">რეზიუმე </label>
 			<span>*</span>
-			<div class="upload-image-input" type="" name="img">
+			<div class="upload-image-input" name="img">
+
+				<input ref="inpUpload" type="file" name="document" hidden id="id_upload_cv" @change="OnFileChange">
+
+				<div v-for="f in files" :key="f.name">{{ f }}</div>
+
 				<img class="upload-image" :src="upload" alt="" />
-				<span class="upload-image-title"
+
+				<label for="id_upload_cv">
+
+					<span class="upload-image-title"
 					>ჩააგდეთ რეზიუმე ან
-					<span class="title-blue">ათვირთეთ ფაილი</span></span
-				>
+					<span class="title-blue">ათვირთეთ ფაილი</span></span>
+				</label> 
+	
 			</div>
 			<div class="terms-con">
 				<div class="check-cont">
@@ -73,6 +82,32 @@
 
 <script setup>
 	import upload from '@/assets/images/upload.svg';
+import { onMounted, ref } from 'vue';
+
+	const inpUpload = ref(null)
+	const files = ref([])
+
+
+	const OnFileChange = () =>{
+		
+			files.value = Array.from(inpUpload.value.files).map(f => {
+				return {
+					name: f.name,
+					type: f.type,
+					size: f.size
+				}
+			})
+		
+
+	}
+
+
+	onMounted(()=>{
+
+	})
+
+
+
 </script>
 <style lang="scss" scoped>
 	.form-box {
@@ -118,6 +153,9 @@
 			outline: none;
 			font-size: 16px;
 			font-family: 'DejaVu Sans';
+
+			box-sizing: border-box;
+
 			&:focus {
 				box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.02);
 			}

@@ -3,7 +3,8 @@
 		<div class="card-comp">
 			<div class="card-title">
 				<span class="title">გრაფიკული დიზაინერი </span>
-				<div>
+
+				<div class="card-action">
 					<span class="title more">შეავსე განაცხადი</span>
 					<img :src="arrow" alt="" />
 				</div>
@@ -13,16 +14,21 @@
 			</div>
 			<div class="card-date">აქტიურია: 25.08.2023 - მდე</div>
 			<div class="card-bottom">
-				<div class="card-colors">
-					<div class="card-location">
-						<img :src="location" alt="" />
-						<span>თბილისი</span>
+				<div class="card-tags">
+
+
+					<div :class="`card-${tag.type}`" v-for="(tag, i) in tags" :key="i">
+						<img :src="tag.icon" alt="" />
+						<span>{{ tag.text }}</span>
 					</div>
-					<div class="card-info">
-						<img :src="time" alt="" />
-						<span>სრული განაკვეთი</span>
-					</div>
+
+
+
+
 				</div>
+
+
+
 				<div class="card-image-desktop">
 					<img :src="palitral" alt="" />
 				</div>
@@ -36,6 +42,20 @@
 	import location from '@/assets/images/static/location.svg';
 	import time from '@/assets/images/static/time.svg';
 	import arrow from '@/assets/images/static/arrow.svg';
+import { ref } from 'vue';
+
+	
+
+	const tags = ref([{
+		"type": "location",
+		"text": "თბილის",
+		"icon": location,
+	}, {
+		"type": "duration",
+		"text": "სრული განაკვეთი",
+		"icon": time,
+	}])
+
 </script>
 
 <style lang="scss" scoped>
@@ -64,7 +84,8 @@
 				font-size: 16px;
 			}
 		}
-
+		
+		
 		div {
 			display: flex;
 			flex-wrap: wrap;
@@ -96,7 +117,7 @@
 		align-items: center;
 		justify-content: space-between;
 	}
-	.card-colors {
+	.card-tags {
 		display: flex;
 		gap: 12px;
 
@@ -123,7 +144,7 @@
 				}
 			}
 		}
-		.card-info {
+		.card-duration {
 			display: flex;
 			gap: 6px;
 			align-items: center;

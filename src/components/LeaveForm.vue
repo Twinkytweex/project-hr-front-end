@@ -1,7 +1,12 @@
 <template>
 	<div class="container">
 		<div class="leaveForm-comp">
-			<div class="leave-comp">
+
+
+		
+			
+
+			<div class="leave-form-inner">
 				<div>
 					<img :src="LeftArrow" alt="" />
 					<span class="leave-title">მიმდინარე ვაკანსიებზე დაბრუნება</span>
@@ -12,20 +17,27 @@
 				</button>
 			</div>
 
-			<span class="leave-ques">ვერ იპოვე შენი შესაბამისი განცხადება? </span
-			><br />
-			<span class="leave-ques"> არაუშავს, დაგვიტოვე რეზიუმე! </span><br />
-			<div class="leave-text">
-				პალიტრა ჰოლდინგი მრავალფეროვან კომპანიებს აერთიანებს, ასე რომ შენი
-				ადგილის მოძებნა ჩვენთან არ გაგიჭირდება.<br />
+			<div class="line"></div>
 
-				ჩვენ ყოველთვის ვაფასებთ განვითარებაზე ორიენტირებულ, მიზანდასახულსა და
-				შრომისმოყვარე ადამიანებს. <br />თუ ფიქრობ, რომ ამ კრიტერიუმებს
-				აკმაყოფილებ, გაბედდე და დატოვე შენი რეზიუმე. ჩვენი რეკრუტერები
-				აუცილებლად დაგიკავშირდებიან შესაფერისი ვაკანსიის გამოჩენისთანავე.<br />
+			<div class="leave-form-inner">
+
+				<span class="leave-ques">ვერ იპოვე შენი შესაბამისი განცხადება? </span
+				><br />
+				<span class="leave-ques"> არაუშავს, დაგვიტოვე რეზიუმე! </span><br />
+				<div class="leave-text">
+					პალიტრა ჰოლდინგი მრავალფეროვან კომპანიებს აერთიანებს, ასე რომ შენი
+					ადგილის მოძებნა ჩვენთან არ გაგიჭირდება.<br />
+	
+					ჩვენ ყოველთვის ვაფასებთ განვითარებაზე ორიენტირებულ, მიზანდასახულსა და
+					შრომისმოყვარე ადამიანებს. <br />თუ ფიქრობ, რომ ამ კრიტერიუმებს
+					აკმაყოფილებ, გაბედდე და დატოვე შენი რეზიუმე. ჩვენი რეკრუტერები
+					აუცილებლად დაგიკავშირდებიან შესაფერისი ვაკანსიის გამოჩენისთანავე.<br />
+				</div>
+				<div class="leave-our">ჩვენი კომპანიები:</div>
+				<Logos />
+
 			</div>
-			<div class="leave-our">ჩვენი კომპანიები:</div>
-			<Logos />
+
 		</div>
 	</div>
 	<Form />
@@ -43,13 +55,21 @@
 		border-radius: 12px;
 		background: #fff;
 		border: 0.5px solid #e9ebee;
-		padding: 25px 38px;
+		
 		margin-bottom: 36px;
 		height: 638px;
 		@media only screen and (max-width: 600px) {
 			height: unset;
 		}
 	}
+
+	.leave-form-inner {
+		padding: 25px 38px;
+
+	}
+
+	
+
 	button {
 		display: flex;
 		align-items: center;
