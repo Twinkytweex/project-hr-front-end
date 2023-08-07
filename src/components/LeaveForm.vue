@@ -1,13 +1,8 @@
 <template>
 	<div class="container">
-		<div class="leaveForm-comp">
-
-
-		
-			
-
+		<div class="leave-form-comp">
 			<div class="leave-form-inner">
-				<div>
+				<div class="leave-form-back">
 					<img :src="LeftArrow" alt="" />
 					<span class="leave-title">მიმდინარე ვაკანსიებზე დაბრუნება</span>
 				</div>
@@ -16,18 +11,15 @@
 					<span> განაცხადის შევსება </span>
 				</button>
 			</div>
-
 			<div class="line"></div>
-
-			<div class="leave-form-inner">
-
+			<div class="leave-form-text">
 				<span class="leave-ques">ვერ იპოვე შენი შესაბამისი განცხადება? </span
 				><br />
 				<span class="leave-ques"> არაუშავს, დაგვიტოვე რეზიუმე! </span><br />
 				<div class="leave-text">
 					პალიტრა ჰოლდინგი მრავალფეროვან კომპანიებს აერთიანებს, ასე რომ შენი
 					ადგილის მოძებნა ჩვენთან არ გაგიჭირდება.<br />
-	
+
 					ჩვენ ყოველთვის ვაფასებთ განვითარებაზე ორიენტირებულ, მიზანდასახულსა და
 					შრომისმოყვარე ადამიანებს. <br />თუ ფიქრობ, რომ ამ კრიტერიუმებს
 					აკმაყოფილებ, გაბედდე და დატოვე შენი რეზიუმე. ჩვენი რეკრუტერები
@@ -35,9 +27,7 @@
 				</div>
 				<div class="leave-our">ჩვენი კომპანიები:</div>
 				<Logos />
-
 			</div>
-
 		</div>
 	</div>
 	<Form />
@@ -51,11 +41,11 @@
 </script>
 
 <style lang="scss" scoped>
-	.leaveForm-comp {
+	.leave-form-comp {
 		border-radius: 12px;
 		background: #fff;
 		border: 0.5px solid #e9ebee;
-		
+
 		margin-bottom: 36px;
 		height: 638px;
 		@media only screen and (max-width: 600px) {
@@ -64,32 +54,38 @@
 	}
 
 	.leave-form-inner {
-		padding: 25px 38px;
-
-	}
-
-	
-
-	button {
 		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 12px;
-		border-radius: 12px;
-		background: #0063bf;
-		padding: 16px 48px 16px 45px;
-		border: none;
-		@media only screen and (max-width: 600px) {
-			display: none;
+		justify-content: space-between;
+		padding: 25px 38px;
+		.leave-form-back {
+			display: flex;
+			align-items: center;
+			justify-content: center;
 		}
-		span {
-			color: #fff;
-			font-family: ' DejaVu Sans';
-			font-size: 16px;
-			font-style: normal;
-			font-weight: 400;
-			line-height: normal;
+		button {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 12px;
+			border-radius: 12px;
+			background: #0063bf;
+			padding: 16px 48px 16px 45px;
+			border: none;
+			@media only screen and (max-width: 600px) {
+				display: none;
+			}
+			span {
+				color: #fff;
+				font-family: var(--font-DejaVu);
+				font-size: 16px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: normal;
+			}
 		}
+	}
+	.leave-form-text {
+		padding: 0px 8px;
 	}
 	.leave-comp {
 		display: flex;
@@ -103,7 +99,7 @@
 			display: flex;
 			align-items: center;
 			.leave-title {
-				font-family: 'DejaVu Sans';
+				font-family: var(--font-DejaVu);
 				font-size: 16px;
 				font-weight: 400;
 				line-height: 21px;
@@ -116,7 +112,7 @@
 		}
 	}
 	.leave-ques {
-		font-family: 'DejaVu Sans';
+		font-family: var(--font-DejaVu);
 		font-size: 24px;
 		font-weight: 400;
 		line-height: 39px;
@@ -128,7 +124,7 @@
 		}
 	}
 	.leave-text {
-		font-family: 'DejaVu Sans';
+		font-family: var(--font-DejaVu);
 		font-size: 16px;
 		font-weight: 400;
 		line-height: 40px;
@@ -139,7 +135,7 @@
 	}
 	.leave-our {
 		color: #0063bf;
-		font-family: 'DejaVu Sans';
+		font-family: var(--font-DejaVu);
 		font-size: 18px;
 		font-style: normal;
 		font-weight: 400;

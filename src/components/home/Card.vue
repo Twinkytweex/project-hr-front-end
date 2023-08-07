@@ -2,32 +2,23 @@
 	<div class="container">
 		<div class="card-comp">
 			<div class="card-title">
-				<span class="title">გრაფიკული დიზაინერი </span>
-
+				<span class="card-action-title">გრაფიკული დიზაინერი </span>
 				<div class="card-action">
-					<span class="title more">შეავსე განაცხადი</span>
+					<span class="card-action-title action-font">შეავსე განაცხადი</span>
 					<img :src="arrow" alt="" />
 				</div>
-				<span class="card-logo">
+				<span class="card-action-logo">
 					<img :src="palitral" alt="" />
 				</span>
 			</div>
 			<div class="card-date">აქტიურია: 25.08.2023 - მდე</div>
 			<div class="card-bottom">
 				<div class="card-tags">
-
-
 					<div :class="`card-${tag.type}`" v-for="(tag, i) in tags" :key="i">
 						<img :src="tag.icon" alt="" />
 						<span>{{ tag.text }}</span>
 					</div>
-
-
-
-
 				</div>
-
-
 
 				<div class="card-image-desktop">
 					<img :src="palitral" alt="" />
@@ -42,20 +33,20 @@
 	import location from '@/assets/images/static/location.svg';
 	import time from '@/assets/images/static/time.svg';
 	import arrow from '@/assets/images/static/arrow.svg';
-import { ref } from 'vue';
+	import { ref } from 'vue';
 
-	
-
-	const tags = ref([{
-		"type": "location",
-		"text": "თბილის",
-		"icon": location,
-	}, {
-		"type": "duration",
-		"text": "სრული განაკვეთი",
-		"icon": time,
-	}])
-
+	const tags = ref([
+		{
+			type: 'location',
+			text: 'თბილისი',
+			icon: location,
+		},
+		{
+			type: 'duration',
+			text: 'სრული განაკვეთი',
+			icon: time,
+		},
+	]);
 </script>
 
 <style lang="scss" scoped>
@@ -72,10 +63,13 @@ import { ref } from 'vue';
 		display: flex;
 		justify-content: space-between;
 		padding-bottom: 8px;
+		@media only screen and (max-width: 600px) {
+			display: none;
+		}
 
-		.title {
+		.card-action-title {
 			color: #0063bf;
-			font-family: 'DejaVu Sans';
+			font-family: var(--font-DejaVu);
 			font-size: 18px;
 			font-style: normal;
 			font-weight: 400;
@@ -84,25 +78,14 @@ import { ref } from 'vue';
 				font-size: 16px;
 			}
 		}
-		
-		
-		div {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 4px;
-			@media only screen and (max-width: 600px) {
-				display: none;
-			}
 
-			.more {
-				font-size: 14px;
-				font-family: 'DejaVu Sans';
-			}
+		.action-font {
+			font-size: 14px;
 		}
 	}
 	.card-date {
 		color: #65798a;
-		font-family: 'DejaVu Sans';
+		font-family: var(--font-DejaVu);
 		font-size: 14px;
 		font-style: normal;
 		font-weight: 400;
@@ -134,7 +117,7 @@ import { ref } from 'vue';
 
 			span {
 				color: #6b1e6c;
-				font-family: 'Noto Sans Georgian';
+				font-family: var(--font-Noto-Sans);
 				font-size: 12px;
 				font-style: normal;
 				font-weight: 400;
@@ -153,7 +136,7 @@ import { ref } from 'vue';
 			padding: 8px 16px;
 			span {
 				color: #1a602e;
-				font-family: 'Noto Sans Georgian';
+				font-family: var(--font-Noto-Sans);
 				font-size: 12px;
 				font-style: normal;
 				font-weight: 400;
@@ -164,11 +147,15 @@ import { ref } from 'vue';
 			}
 		}
 	}
-	.card-logo {
+	.card-action-logo {
 		display: none;
 		@media only screen and (max-width: 600px) {
 			display: flex;
 		}
+	}
+	.card-action {
+		display: flex;
+		align-items: center;
 	}
 	.card-image-desktop {
 		@media only screen and (max-width: 600px) {

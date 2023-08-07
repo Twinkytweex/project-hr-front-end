@@ -32,7 +32,7 @@
 	}
 	span {
 		color: #000;
-		font-family: 'DejaVu Sans';
+		font-family: var(--font-DejaVu);
 		font-size: 18px;
 		font-style: normal;
 		font-weight: 400;
@@ -43,7 +43,7 @@
 	}
 	p {
 		color: #0063bf;
-		font-family: DejaVu Sans;
+		font-family: var(--font-DejaVu);
 		font-size: 18px;
 		font-style: normal;
 		font-weight: 400;

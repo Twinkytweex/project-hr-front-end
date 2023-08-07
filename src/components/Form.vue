@@ -35,20 +35,25 @@
 			<label class="forms-name">რეზიუმე </label>
 			<span>*</span>
 			<div class="upload-image-input" name="img">
-
-				<input ref="inpUpload" type="file" name="document" hidden id="id_upload_cv" @change="OnFileChange">
+				<input
+					ref="inpUpload"
+					type="file"
+					name="document"
+					hidden
+					id="id_upload_cv"
+					@change="OnFileChange"
+				/>
 
 				<div v-for="f in files" :key="f.name">{{ f }}</div>
 
 				<img class="upload-image" :src="upload" alt="" />
 
 				<label for="id_upload_cv">
-
 					<span class="upload-image-title"
-					>ჩააგდეთ რეზიუმე ან
-					<span class="title-blue">ათვირთეთ ფაილი</span></span>
-				</label> 
-	
+						>ჩააგდეთ რეზიუმე ან
+						<span class="title-blue">ათვირთეთ ფაილი</span></span
+					>
+				</label>
 			</div>
 			<div class="terms-con">
 				<div class="check-cont">
@@ -82,32 +87,22 @@
 
 <script setup>
 	import upload from '@/assets/images/upload.svg';
-import { onMounted, ref } from 'vue';
+	import { onMounted, ref } from 'vue';
 
-	const inpUpload = ref(null)
-	const files = ref([])
+	const inpUpload = ref(null);
+	const files = ref([]);
 
+	const OnFileChange = () => {
+		files.value = Array.from(inpUpload.value.files).map((f) => {
+			return {
+				name: f.name,
+				type: f.type,
+				size: f.size,
+			};
+		});
+	};
 
-	const OnFileChange = () =>{
-		
-			files.value = Array.from(inpUpload.value.files).map(f => {
-				return {
-					name: f.name,
-					type: f.type,
-					size: f.size
-				}
-			})
-		
-
-	}
-
-
-	onMounted(()=>{
-
-	})
-
-
-
+	onMounted(() => {});
 </script>
 <style lang="scss" scoped>
 	.form-box {
@@ -133,7 +128,7 @@ import { onMounted, ref } from 'vue';
 	}
 	.forms-name {
 		color: #474747;
-		font-family: 'DejaVu Sans';
+		font-family: var(--font-DejaVu);
 		font-size: 16px;
 		font-style: normal;
 		font-weight: 400;
@@ -152,7 +147,7 @@ import { onMounted, ref } from 'vue';
 			width: 100%;
 			outline: none;
 			font-size: 16px;
-			font-family: 'DejaVu Sans';
+			font-family: var(--font-DejaVu);
 
 			box-sizing: border-box;
 
@@ -174,7 +169,7 @@ import { onMounted, ref } from 'vue';
 		width: 100%;
 		height: 224px;
 		.upload-image-title {
-			font-family: 'DejaVu Sans';
+			font-family: var(--font-DejaVu);
 			font-size: 18px;
 			font-style: normal;
 			font-weight: 400;
@@ -200,7 +195,7 @@ import { onMounted, ref } from 'vue';
 		}
 		.check-text {
 			color: #000;
-			font-family: 'DejaVu Sans';
+			font-family: var(--font-DejaVu);
 			font-size: 18px;
 			font-style: normal;
 			font-weight: 400;
@@ -211,7 +206,7 @@ import { onMounted, ref } from 'vue';
 		}
 		.check-accept {
 			color: #5d6f7f;
-			font-family: 'DejaVu Sans';
+			font-family: var(--font-DejaVu);
 			font-size: 15px;
 			font-style: normal;
 			font-weight: 400;

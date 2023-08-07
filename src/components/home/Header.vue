@@ -50,14 +50,13 @@
 			width: 100vw;
 			height: 100%;
 			background-color: rgba(233, 245, 253, 0.92);
-
 		}
 	}
 
 	.header-title {
 		color: #000;
 		text-align: center;
-		font-family: 'BPG Nino Mkhedruli Book';
+		font-family: var(--font-NiNo-MkeDrUli);
 		font-size: 32px;
 		font-style: normal;
 		font-weight: 400;

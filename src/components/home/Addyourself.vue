@@ -60,7 +60,7 @@
 		flex-direction: column;
 		gap: 8px;
 		color: #000;
-		font-family: 'DejaVu Sans';
+		font-family: var(--font-DejaVu);
 		font-size: 18px;
 		font-style: normal;
 		font-weight: 400;
@@ -86,7 +86,7 @@
 
 		span {
 			color: #fff;
-			font-family: ' DejaVu Sans';
+			font-family: ' var(--font-DejaVu)';
 			font-size: 16px;
 			font-style: normal;
 			font-weight: 400;
