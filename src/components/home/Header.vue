@@ -45,12 +45,12 @@
 			content: '';
 			position: absolute;
 			top: 0;
-			left: 0;
+			left: calc(50% - 50vw);
 			z-index: -1;
-			width: 100%;
+			width: 100vw;
 			height: 100%;
 			background-color: rgba(233, 245, 253, 0.92);
-			transform: scaleX(20);
+
 		}
 	}
 
