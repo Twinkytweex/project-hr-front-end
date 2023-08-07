@@ -1,0 +1,214 @@
+<template>
+	<div class="container">
+		<div class="form-box">
+			<div class="forms-comp">
+				<div class="forms-input-cont">
+					<div class="forms-input-title">
+						<label class="forms-name">სახელი </label>
+						<span>*</span>
+					</div>
+					<input type="text" name="" id="" />
+				</div>
+				<div class="forms-input-cont">
+					<div class="forms-input-title">
+						<label class="forms-name">გვარი </label>
+						<span>*</span>
+					</div>
+					<input type="text" name="" id="" />
+				</div>
+
+				<div class="forms-input-cont">
+					<div class="forms-input-title">
+						<label class="forms-name">ტელეფონის ნომერი </label>
+						<span>*</span>
+					</div>
+					<input type="tel" name="" id="" />
+				</div>
+				<div class="forms-input-cont">
+					<div class="forms-input-title">
+						<label class="forms-name">მეილი </label>
+						<span>*</span>
+					</div>
+					<input type="text" name="" id="" />
+				</div>
+			</div>
+			<label class="forms-name">რეზიუმე </label>
+			<span>*</span>
+			<div class="upload-image-input" type="" name="img">
+				<img class="upload-image" :src="upload" alt="" />
+				<span class="upload-image-title"
+					>ჩააგდეთ რეზიუმე ან
+					<span class="title-blue">ათვირთეთ ფაილი</span></span
+				>
+			</div>
+			<div class="terms-con">
+				<div class="check-cont">
+					<input class="checkbox" type="checkbox" />
+					<div class="check-text-mobile">
+						<span class="check-text">ვეთანხმები ჩემი პირადი მონაცემების </span>
+						<span class="check-text"> დამუშავებას *</span>
+					</div>
+					<span class="check-text none-mobile"
+						>ვეთანხმები ჩემი პირადი მონაცემების დამუშავებას
+					</span>
+					<span class="none-mobile">*</span>
+				</div>
+				<span class="check-accept"
+					>ვეთანხმები ჩემ მიერ მოწოდებული პირადი მონაცემების დამუშავებას პალიტრა
+					ჰოლდინგის ან-და მისი შვილობილი კომპანიების მიერ, პოტენციური დასაქმების
+					მიზნით. ვაცნობიერებ, რომ ჩემ მიერ მოწოდებული პირადი ინფორმაცია
+					შესაძლოა შენახული იყოს მაქსიმუმ 2 წლის ვადით, ხოლო მოგვიანებით
+					წაიშლება.</span
+				>
+				<span class="check-accept"
+					>კომპანიის ბაზიდან მონაცემების ვადაზე ადრე წასაშლელად კანდიდატმა უნდა
+					<br />
+					მოგვმართოს ელ. ფოსტაზე:
+					<span class="blue">vacancy@palitra.ge</span></span
+				>
+			</div>
+		</div>
+	</div>
+</template>
+
+<script setup>
+	import upload from '@/assets/images/upload.svg';
+</script>
+<style lang="scss" scoped>
+	.form-box {
+		border-radius: 12px;
+		background: #fff;
+		border: 0.5px solid #e9ebee;
+		padding: 38px;
+	}
+	.forms-comp {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		row-gap: 32px;
+		column-gap: 90px;
+		padding-bottom: 32px;
+		@media only screen and (max-width: 600px) {
+			display: flex;
+			flex-direction: column;
+		}
+
+		&:hover {
+			box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.02);
+		}
+	}
+	.forms-name {
+		color: #474747;
+		font-family: 'DejaVu Sans';
+		font-size: 16px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: 200%; /* 32px */
+		@media only screen and (max-width: 600px) {
+			font-size: 14px;
+		}
+	}
+	.forms-input-cont {
+		width: 100%;
+		input {
+			border-radius: 12px;
+			border: 1px solid #e9ebee;
+			padding: 15px 12px;
+			max-width: 575px;
+			width: 100%;
+			outline: none;
+			font-size: 16px;
+			font-family: 'DejaVu Sans';
+			&:focus {
+				box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.02);
+			}
+		}
+	}
+	.upload-image-input {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+		gap: 30px;
+		border-radius: 16px;
+		border: 1px dashed #7abfff;
+		background: #fafdfe;
+		max-width: 1215px;
+		width: 100%;
+		height: 224px;
+		.upload-image-title {
+			font-family: 'DejaVu Sans';
+			font-size: 18px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 200%;
+			@media only screen and (max-width: 600px) {
+				font-size: 14px;
+			}
+
+			.title-blue {
+				color: #0063bf;
+				cursor: pointer;
+			}
+		}
+	}
+
+	.terms-con {
+		display: flex;
+		flex-direction: column;
+		margin-top: 46px;
+		.checkbox {
+			width: 28px;
+			height: 28px;
+		}
+		.check-text {
+			color: #000;
+			font-family: 'DejaVu Sans';
+			font-size: 18px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 200%; /* 36px */
+			@media only screen and (max-width: 600px) {
+				font-size: 14px;
+			}
+		}
+		.check-accept {
+			color: #5d6f7f;
+			font-family: 'DejaVu Sans';
+			font-size: 15px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: 200%; /* 32px */
+			margin-bottom: 16px;
+			@media only screen and (max-width: 600px) {
+				font-size: 14px;
+			}
+		}
+		.blue {
+			color: #0063bf;
+			cursor: pointer;
+		}
+	}
+	.check-cont {
+		display: flex;
+		align-items: center;
+		margin-bottom: 12px;
+		gap: 10px;
+	}
+	.test-input {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.check-text-mobile {
+		display: none;
+		@media only screen and (max-width: 600px) {
+			display: flex;
+			flex-direction: column;
+		}
+	}
+	.none-mobile {
+		@media only screen and (max-width: 600px) {
+			display: none;
+		}
+	}
+</style>

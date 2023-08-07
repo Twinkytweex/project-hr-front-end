@@ -19,7 +19,7 @@
 
 <script setup>
 	import searchButton from '@/assets/images/searchButton.svg';
-	import palitra from '@/assets/logos/palitra.svg';
+	import palitra from '@/assets/images/logos/palitra.svg';
 </script>
 
 <style lang="scss" scoped>
@@ -37,7 +37,10 @@
 		isolation: isolate;
 		margin-bottom: 55px;
 		background-image: url('@/assets/images/mainImg.svg');
-
+		@media only screen and (max-width: 600px) {
+			padding: 25px 15px;
+			margin-bottom: 32px;
+		}
 		&::before {
 			content: '';
 			position: absolute;
@@ -59,6 +62,10 @@
 		font-style: normal;
 		font-weight: 400;
 		line-height: 50px;
+		@media only screen and (max-width: 600px) {
+			font-size: 16px;
+			line-height: 155.953%; /* 24.952px */
+		}
 	}
 
 	.input-cont {
@@ -74,6 +81,9 @@
 			padding: 15px 58px 15px 32px;
 			font-size: 1.25rem;
 			outline: none;
+			@media only screen and (max-width: 600px) {
+				font-size: 0.8rem;
+			}
 
 			&:focus,
 			&:hover {
