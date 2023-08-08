@@ -1,13 +1,14 @@
 <template>
 	<div class="container">
-		<div class="card-comp">
+		<div class="card-comp" :class="{ none_border: props.vacancy_layout }">
 			<div class="card-title">
 				<span class="card-action-title">გრაფიკული დიზაინერი </span>
-				<div class="card-action">
+				<div class="card-action" v-if="!props.vacancy_layout">
 					<span class="card-action-title action-font">შეავსე განაცხადი</span>
 					<img :src="arrow" alt="" />
 				</div>
-				<span class="card-action-logo">
+				<span class="card-action-logo"> <img :src="palitral" alt="" /> </span>
+				<span class="card-action-logo-vac" v-if="props.vacancy_layout">
 					<img :src="palitral" alt="" />
 				</span>
 			</div>
@@ -19,8 +20,7 @@
 						<span>{{ tag.text }}</span>
 					</div>
 				</div>
-
-				<div class="card-image-desktop">
+				<div class="card-image-desktop" v-if="!props.vacancy_layout">
 					<img :src="palitral" alt="" />
 				</div>
 			</div>
@@ -33,8 +33,22 @@
 	import location from '@/assets/images/static/location.svg';
 	import time from '@/assets/images/static/time.svg';
 	import arrow from '@/assets/images/static/arrow.svg';
-	import { ref } from 'vue';
+	import { defineProps } from 'vue';
+	import { ref, onMounted } from 'vue';
+	import { ismobile } from '@/utils/ismobile';
 
+	const isMobile = ref(false);
+	onMounted(() => {
+		window.onunload = function () {
+			window.scrollTo(0, 0);
+		};
+
+		ismobile() ? (isMobile.value = true) : (isMobile.value = false);
+		console.log(isMobile.value);
+	});
+	const props = defineProps({
+		vacancy_layout: Boolean,
+	});
 	const tags = ref([
 		{
 			type: 'location',
@@ -51,6 +65,7 @@
 
 <style lang="scss" scoped>
 	.card-comp {
+		cursor: pointer;
 		border-radius: 18px;
 		border: 0.5px solid #e9ebee;
 		background: #fff;
@@ -63,9 +78,6 @@
 		display: flex;
 		justify-content: space-between;
 		padding-bottom: 8px;
-		@media only screen and (max-width: 600px) {
-			display: none;
-		}
 
 		.card-action-title {
 			color: #0063bf;
@@ -156,10 +168,22 @@
 	.card-action {
 		display: flex;
 		align-items: center;
+		@media only screen and (max-width: 600px) {
+			display: none;
+		}
 	}
 	.card-image-desktop {
 		@media only screen and (max-width: 600px) {
 			display: none;
 		}
+	}
+	@media only screen and (max-width: 600px) {
+		.card-action-logo-vac {
+			display: none;
+		}
+	}
+	.none_border {
+		border: unset;
+		padding: 20px 38px;
 	}
 </style>

@@ -5,14 +5,14 @@
 				<div class="forms-input-cont">
 					<div class="forms-input-title">
 						<label class="forms-name">სახელი </label>
-						<span>*</span>
+						<span class="red">*</span>
 					</div>
 					<input type="text" name="" id="" />
 				</div>
 				<div class="forms-input-cont">
 					<div class="forms-input-title">
 						<label class="forms-name">გვარი </label>
-						<span>*</span>
+						<span class="red">*</span>
 					</div>
 					<input type="text" name="" id="" />
 				</div>
@@ -20,20 +20,20 @@
 				<div class="forms-input-cont">
 					<div class="forms-input-title">
 						<label class="forms-name">ტელეფონის ნომერი </label>
-						<span>*</span>
+						<span class="red">*</span>
 					</div>
 					<input type="tel" name="" id="" />
 				</div>
 				<div class="forms-input-cont">
 					<div class="forms-input-title">
 						<label class="forms-name">მეილი </label>
-						<span>*</span>
+						<span class="red">*</span>
 					</div>
 					<input type="text" name="" id="" />
 				</div>
 			</div>
 			<label class="forms-name">რეზიუმე </label>
-			<span>*</span>
+			<span class="red">*</span>
 			<div class="upload-image-input" name="img">
 				<input
 					ref="inpUpload"
@@ -43,15 +43,12 @@
 					id="id_upload_cv"
 					@change="OnFileChange"
 				/>
-
 				<div v-for="f in files" :key="f.name">{{ f }}</div>
-
 				<img class="upload-image" :src="upload" alt="" />
-
 				<label for="id_upload_cv">
 					<span class="upload-image-title"
 						>ჩააგდეთ რეზიუმე ან
-						<span class="title-blue">ათვირთეთ ფაილი</span></span
+						<span class="title-upload">ათვირთეთ ფაილი</span></span
 					>
 				</label>
 			</div>
@@ -65,7 +62,7 @@
 					<span class="check-text none-mobile"
 						>ვეთანხმები ჩემი პირადი მონაცემების დამუშავებას
 					</span>
-					<span class="none-mobile">*</span>
+					<span class="none-mobile red">*</span>
 				</div>
 				<span class="check-accept"
 					>ვეთანხმები ჩემ მიერ მოწოდებული პირადი მონაცემების დამუშავებას პალიტრა
@@ -177,8 +174,7 @@
 			@media only screen and (max-width: 600px) {
 				font-size: 14px;
 			}
-
-			.title-blue {
+			.title-upload {
 				color: #0063bf;
 				cursor: pointer;
 			}

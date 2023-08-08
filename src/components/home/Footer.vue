@@ -13,5 +13,6 @@
 		background: #fcfcfc;
 		padding-top: 76px;
 		margin-top: 76px;
+		margin-bottom: 20px;
 	}
 </style>

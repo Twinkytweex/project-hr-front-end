@@ -11,11 +11,6 @@
 			</button>
 		</div>
 	</div>
-
-
-
-
-
 </template>
 
 <script setup>
@@ -33,8 +28,7 @@
 		margin-top: 114px;
 		margin-bottom: 80px;
 		height: 165px;
-		padding: 0px 10px;
-
+		padding: 0px 50px;
 
 		&::before {
 			content: '';
@@ -46,8 +40,6 @@
 			height: 100%;
 			background: rgba(233, 245, 253, 0.92);
 		}
-
-
 
 		@media only screen and (max-width: 600px) {
 			flex-direction: column;
@@ -72,6 +64,7 @@
 	}
 
 	button {
+		cursor: pointer;
 		display: flex;
 		align-items: center;
 		justify-content: center;
