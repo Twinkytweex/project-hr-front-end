@@ -1,7 +1,9 @@
 <template>
 	<div class="container">
 		<div class="success-comp">
-			<span>თქვენი განაცხადი მიღებულია, წარმატებებს გისურვებთ!</span>
+			<span class="success-text"
+				>თქვენი განაცხადი მიღებულია, წარმატებებს გისურვებთ!</span
+			>
 			<img :src="mark" alt="" />
 			<p>ვაკანსიებზე დაბრუნება</p>
 		</div>
@@ -30,13 +32,14 @@
 			box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.02);
 		}
 	}
-	span {
+	.success-text {
 		color: #000;
 		font-family: var(--font-DejaVu);
 		font-size: 18px;
 		font-style: normal;
 		font-weight: 400;
 		line-height: 200%; /* 36px */
+		text-align: center;
 		@media only screen and (max-width: 600px) {
 			font-size: 16px;
 		}

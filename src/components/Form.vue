@@ -57,7 +57,9 @@
 					<input class="checkbox" type="checkbox" />
 					<div class="check-text-mobile">
 						<span class="check-text">ვეთანხმები ჩემი პირადი მონაცემების </span>
-						<span class="check-text"> დამუშავებას *</span>
+						<span class="check-text">
+							დამუშავებას <span class="red">*</span></span
+						>
 					</div>
 					<span class="check-text none-mobile"
 						>ვეთანხმები ჩემი პირადი მონაცემების დამუშავებას

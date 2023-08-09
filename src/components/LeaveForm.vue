@@ -57,6 +57,10 @@
 		display: flex;
 		justify-content: space-between;
 		padding: 25px 38px;
+		@media only screen and (max-width: 600px) {
+			padding: 25px 8px;
+		}
+
 		.leave-form-back {
 			display: flex;
 			align-items: center;

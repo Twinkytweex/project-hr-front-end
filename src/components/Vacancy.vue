@@ -93,6 +93,9 @@
 		line-height: 200%; /* 32px */
 		text-align: justify;
 		padding: 42px 38px 56px;
+		@media only screen and (max-width: 600px) {
+			font-size: 14px;
+		}
 	}
 	.vacancy-conditions {
 		padding: 20px 38px;
@@ -105,6 +108,9 @@
 			font-style: normal;
 			font-weight: 400;
 			line-height: 200%; /* 32px */
+			@media only screen and (max-width: 600px) {
+				font-size: 14px;
+			}
 		}
 		.vacancy-actions {
 			color: #0063bf;
