@@ -1,6 +1,7 @@
 <template>
 	<div class="container">
 		<div class="card-comp" :class="{ none_border: props.vacancy_layout }">
+			<!-- <router-link :to="{ name:"form", params: { id: cards.id } }"> -->
 			<div class="card-title">
 				<span class="card-action-title">გრაფიკული დიზაინერი </span>
 				<div class="card-action" v-if="!props.vacancy_layout">
@@ -24,6 +25,7 @@
 					<img :src="palitral" alt="" />
 				</div>
 			</div>
+			<!-- </router-link> -->
 		</div>
 	</div>
 </template>
@@ -70,6 +72,9 @@
 		border: 0.5px solid #e9ebee;
 		background: #fff;
 		padding: 20px 24px;
+		&:not(:last-child) {
+			margin-bottom: 24px;
+		}
 		&:hover {
 			box-shadow: 0px 2px 18px 0px rgba(0, 0, 0, 0.02);
 		}
@@ -166,10 +171,14 @@
 		}
 	}
 	.card-action {
+		cursor: pointer;
 		display: flex;
 		align-items: center;
 		@media only screen and (max-width: 600px) {
 			display: none;
+		}
+		&:hover {
+			box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.02);
 		}
 	}
 	.card-image-desktop {
