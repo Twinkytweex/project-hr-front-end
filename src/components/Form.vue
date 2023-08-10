@@ -80,11 +80,15 @@
 					<span class="blue">vacancy@palitra.ge</span></span
 				>
 			</div>
+			<div class="confirm-cont">
+				<Button :button="button" />
+			</div>
 		</div>
 	</div>
 </template>
 
 <script setup>
+	import Button from '@/components/Button.vue';
 	import upload from '@/assets/images/upload.svg';
 	import { onMounted, ref } from 'vue';
 
@@ -241,5 +245,10 @@
 		@media only screen and (max-width: 600px) {
 			display: none;
 		}
+	}
+	.confirm-cont {
+		display: flex;
+		justify-content: end;
+		padding-top: 32px;
 	}
 </style>

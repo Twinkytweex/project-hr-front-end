@@ -7,7 +7,6 @@
 		</div>
 	</div>
 </template>
-
 <script setup>
 	import printarea from '@/assets/images/logos/printarea.svg';
 	import biblusi from '@/assets/images/logos/biblusi.svg';

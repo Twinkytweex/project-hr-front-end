@@ -2,14 +2,11 @@
 	<div class="container">
 		<div class="leave-form-comp">
 			<div class="leave-form-inner">
-				<div class="leave-form-back">
-					<img :src="LeftArrow" alt="" />
+				<div class="leave-form-back" @click="$router.back()">
+					<img class="leave-form-img" :src="LeftArrow" alt="" />
 					<span class="leave-title">მიმდინარე ვაკანსიებზე დაბრუნება</span>
 				</div>
-				<button>
-					<img :src="fill" alt="" />
-					<span> განაცხადის შევსება </span>
-				</button>
+				<Button />
 			</div>
 			<div class="line"></div>
 			<div class="leave-form-text">
@@ -34,10 +31,10 @@
 </template>
 
 <script setup>
+	import Button from '@/components/Button.vue';
 	import Logos from '@/components/home/Logos.vue';
 	import Form from '@/components/Form.vue';
 	import LeftArrow from '@/assets/images/static/LeftArrow.svg';
-	import fill from '@/assets/images/static/fill.svg';
 </script>
 
 <style lang="scss" scoped>
@@ -65,6 +62,11 @@
 			display: flex;
 			align-items: center;
 			justify-content: center;
+			gap: 8px;
+			.leave-form-img,
+			.leave-title {
+				cursor: pointer;
+			}
 		}
 		button {
 			cursor: pointer;
@@ -90,7 +92,7 @@
 		}
 	}
 	.leave-form-text {
-		padding: 0px 8px;
+		padding: 60px 38px 8px;
 	}
 	.leave-comp {
 		display: flex;

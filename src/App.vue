@@ -1,11 +1,7 @@
 <template>
-
 	<Header />
 	<router-view />
-
-		
 	<ScrollUp />
-
 	<Footer />
 </template>
 

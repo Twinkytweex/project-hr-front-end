@@ -5,32 +5,30 @@
 </template>
 
 <script setup>
-	
 	import Card from '@/components/home/Card.vue';
 	import AddYourself from '@/components/home/AddYourself.vue';
 	import Logos from '@/components/home/Logos.vue';
-	
 
 	import { ref } from 'vue';
 	const cards = ref([
 		{
-			id: 156,
+			id: 1,
 			item: '',
 		},
 		{
-			id: 23,
+			id: 2,
 			item: '',
 		},
 		{
-			id: 44,
+			id: 3,
 			item: '',
 		},
 		{
-			id: 45,
+			id: 4,
 			item: '',
 		},
 		{
-			id: 78,
+			id: 5,
 			item: '',
 		},
 	]);

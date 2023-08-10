@@ -1,7 +1,12 @@
 <template>
-	<div class="header-comp container" :class="{ 'header-mini': route.name != 'home' }">
+	<div
+		class="header-comp container"
+		:class="{ 'header-mini': route.name != 'home' }"
+	>
 		<div class="header-logo">
-			<img class="palitra-svg" :src="palitra" alt="" />
+			<router-link to="/">
+				<img class="palitra-svg" :src="palitra" alt=""
+			/></router-link>
 		</div>
 		<div class="header-body">
 			<div class="header-title">
@@ -22,8 +27,7 @@
 	import searchButton from '@/assets/images/searchButton.svg';
 	import palitra from '@/assets/images/logos/palitra.svg';
 
-	const route = useRoute()
-
+	const route = useRoute();
 </script>
 
 <style lang="scss" scoped>
@@ -32,9 +36,9 @@
 	}
 
 	.header-mini {
-		.header-title, .input-cont {
+		.header-title,
+		.input-cont {
 			display: none;
-
 		}
 	}
 

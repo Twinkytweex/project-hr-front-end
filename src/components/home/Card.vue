@@ -1,12 +1,15 @@
 <template>
 	<div class="container">
 		<div class="card-comp" :class="{ none_border: props.vacancy_layout }">
-			<!--  -->
 			<div class="card-title">
-				<span class="card-action-title">გრაფიკული დიზაინერი ({{ card.id }}) </span>
+				<router-link :to="{ name: 'form', params: { id: props.card.id } }">
+					<span class="card-action-title"
+						>გრაფიკული დიზაინერი ({{ card.id }})
+					</span>
+				</router-link>
 
 				<div class="card-action" v-if="!props.vacancy_layout">
-					<router-link :to="{ name:'form', params: { id: props.card.id } }">
+					<router-link :to="{ name: 'form', params: { id: props.card.id } }">
 						<span class="card-action-title action-font">შეავსე განაცხადი</span>
 						<img :src="arrow" alt="" />
 					</router-link>
@@ -28,7 +31,6 @@
 					<img :src="palitral" alt="" />
 				</div>
 			</div>
-
 		</div>
 	</div>
 </template>
@@ -40,14 +42,8 @@
 	import arrow from '@/assets/images/static/arrow.svg';
 	import { defineProps } from 'vue';
 	import { ref } from 'vue';
-
-
 	// import { ismobile } from '@/utils/ismobile';
-
 	// const isMobile = ref(false);
-
-
-	
 	// onMounted(() => {
 	// 	window.onunload = function () {
 	// 		window.scrollTo(0, 0);
@@ -56,22 +52,16 @@
 	// 	ismobile() ? (isMobile.value = true) : (isMobile.value = false);
 	// 	console.log(isMobile.value);
 	// });
-
-
-
 	const props = defineProps({
 		vacancy_layout: {
 			type: Boolean,
-			default: false
+			default: false,
 		},
 		card: {
 			type: Object,
-			required: true
-		}
+			required: true,
+		},
 	});
-
-
-
 
 	const tags = ref([
 		{
@@ -89,7 +79,7 @@
 
 <style lang="scss" scoped>
 	.card-comp {
-		cursor: pointer;
+		// cursor: pointer;
 		border-radius: 18px;
 		border: 0.5px solid #e9ebee;
 		background: #fff;
@@ -98,7 +88,7 @@
 			margin-bottom: 24px;
 		}
 		&:hover {
-			box-shadow: 0px 2px 18px 0px rgba(0, 0, 0, 0.02);
+			box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.04);
 		}
 	}
 	.card-title {
@@ -200,7 +190,6 @@
 			align-items: center;
 		}
 
-
 		@media only screen and (max-width: 600px) {
 			display: none;
 		}
@@ -209,6 +198,7 @@
 		}
 	}
 	.card-image-desktop {
+		cursor: pointer;
 		@media only screen and (max-width: 600px) {
 			display: none;
 		}

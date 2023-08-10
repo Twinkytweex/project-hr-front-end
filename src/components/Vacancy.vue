@@ -2,16 +2,13 @@
 	<div class="container">
 		<div class="vacancy-comp">
 			<div class="vacancy-header">
-				<div class="vacancy-header-left">
-					<img :src="LeftArrow" alt="" />
+				<div class="vacancy-header-left" @click="$router.back()">
+					<img class="vacancy-header-img" :src="LeftArrow" alt="" />
 					<span class="vacancy-header-back"
 						>მიმდინარე ვაკანსიებზე დაბრუნება</span
 					>
 				</div>
-				<button>
-					<img :src="fill" alt="" />
-					<span> განაცხადის შევსება </span>
-				</button>
+				<Button />
 			</div>
 			<div class="line"></div>
 
@@ -37,31 +34,26 @@
 					<li>ციფრული დიზაინის შექმნა</li>
 					<li>ციფრული დიზაინის შექმნა</li>
 				</ul>
+				<Button />
 			</div>
 		</div>
 	</div>
 </template>
 
 <script setup>
+	import Button from '@/components/Button.vue';
 	import LeftArrow from '@/assets/images/static/LeftArrow.svg';
-	import fill from '@/assets/images/static/fill.svg';
 	import Card from '@/components/home/Card.vue';
-import { computed } from 'vue';
-import { useRoute } from 'vue-router';
+	import { computed } from 'vue';
+	import { useRoute } from 'vue-router';
 
+	const route = useRoute();
 
-const route = useRoute()
-
-	const card = computed(()=>{
-
+	const card = computed(() => {
 		return {
-			id: route.params.id
-		}
-	})
-
-
-
-
+			id: route.params.id,
+		};
+	});
 </script>
 
 <style lang="scss" scoped>
@@ -141,6 +133,13 @@ const route = useRoute()
 			@media only screen and (max-width: 600px) {
 				font-size: 14px;
 			}
+		}
+	}
+	.vacancy-header-left {
+		gap: 8px;
+		.vacancy-header-img,
+		.vacancy-header-back {
+			cursor: pointer;
 		}
 	}
 </style>
