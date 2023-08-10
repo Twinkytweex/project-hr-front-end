@@ -14,7 +14,9 @@
 				</button>
 			</div>
 			<div class="line"></div>
-			<Card vacancy_layout />
+
+			<Card vacancy_layout :card="card" />
+
 			<div class="vacancy-description">
 				"გამომცემლობა პალიტრა L" "პალიტრა ჰოლდინგის" შვილობილი კომპანიაა,
 				რომელიც 2005 წელს დაარსდა და დღეს ქართულ საგამომცემლო სივრცეში ყველაზე
@@ -26,6 +28,7 @@
 				ქართველ მკითხველთან, მივცეთ საშუალება, თავად ჩაერთოს წიგნის შერჩევასა და
 				საგამომცემლო პროცესში, იკითხოს მხოლოდ საუკეთესო.
 			</div>
+
 			<div class="vacancy-conditions">
 				<span class="vacancy-actions">მოვალეობები</span>
 				<ul>
@@ -43,6 +46,22 @@
 	import LeftArrow from '@/assets/images/static/LeftArrow.svg';
 	import fill from '@/assets/images/static/fill.svg';
 	import Card from '@/components/home/Card.vue';
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
+
+
+const route = useRoute()
+
+	const card = computed(()=>{
+
+		return {
+			id: route.params.id
+		}
+	})
+
+
+
+
 </script>
 
 <style lang="scss" scoped>

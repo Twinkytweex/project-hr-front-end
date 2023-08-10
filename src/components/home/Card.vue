@@ -1,12 +1,15 @@
 <template>
 	<div class="container">
 		<div class="card-comp" :class="{ none_border: props.vacancy_layout }">
-			<!-- <router-link :to="{ name:"form", params: { id: cards.id } }"> -->
+			<!--  -->
 			<div class="card-title">
-				<span class="card-action-title">გრაფიკული დიზაინერი </span>
+				<span class="card-action-title">გრაფიკული დიზაინერი ({{ card.id }}) </span>
+
 				<div class="card-action" v-if="!props.vacancy_layout">
-					<span class="card-action-title action-font">შეავსე განაცხადი</span>
-					<img :src="arrow" alt="" />
+					<router-link :to="{ name:'form', params: { id: props.card.id } }">
+						<span class="card-action-title action-font">შეავსე განაცხადი</span>
+						<img :src="arrow" alt="" />
+					</router-link>
 				</div>
 				<span class="card-action-logo"> <img :src="palitral" alt="" /> </span>
 				<span class="card-action-logo-vac" v-if="props.vacancy_layout">
@@ -25,7 +28,7 @@
 					<img :src="palitral" alt="" />
 				</div>
 			</div>
-			<!-- </router-link> -->
+
 		</div>
 	</div>
 </template>
@@ -36,21 +39,40 @@
 	import time from '@/assets/images/static/time.svg';
 	import arrow from '@/assets/images/static/arrow.svg';
 	import { defineProps } from 'vue';
-	import { ref, onMounted } from 'vue';
-	import { ismobile } from '@/utils/ismobile';
+	import { ref } from 'vue';
 
-	const isMobile = ref(false);
-	onMounted(() => {
-		window.onunload = function () {
-			window.scrollTo(0, 0);
-		};
 
-		ismobile() ? (isMobile.value = true) : (isMobile.value = false);
-		console.log(isMobile.value);
-	});
+	// import { ismobile } from '@/utils/ismobile';
+
+	// const isMobile = ref(false);
+
+
+	
+	// onMounted(() => {
+	// 	window.onunload = function () {
+	// 		window.scrollTo(0, 0);
+	// 	};
+
+	// 	ismobile() ? (isMobile.value = true) : (isMobile.value = false);
+	// 	console.log(isMobile.value);
+	// });
+
+
+
 	const props = defineProps({
-		vacancy_layout: Boolean,
+		vacancy_layout: {
+			type: Boolean,
+			default: false
+		},
+		card: {
+			type: Object,
+			required: true
+		}
 	});
+
+
+
+
 	const tags = ref([
 		{
 			type: 'location',
@@ -172,8 +194,13 @@
 	}
 	.card-action {
 		cursor: pointer;
-		display: flex;
-		align-items: center;
+
+		& > a {
+			display: flex;
+			align-items: center;
+		}
+
+
 		@media only screen and (max-width: 600px) {
 			display: none;
 		}

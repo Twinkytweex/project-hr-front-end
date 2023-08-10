@@ -1,5 +1,5 @@
 <template>
-	<div class="header-comp container">
+	<div class="header-comp container" :class="{ 'header-mini': route.name != 'home' }">
 		<div class="header-logo">
 			<img class="palitra-svg" :src="palitra" alt="" />
 		</div>
@@ -18,13 +18,24 @@
 </template>
 
 <script setup>
+	import { useRoute } from 'vue-router';
 	import searchButton from '@/assets/images/searchButton.svg';
 	import palitra from '@/assets/images/logos/palitra.svg';
+
+	const route = useRoute()
+
 </script>
 
 <style lang="scss" scoped>
 	.header-logo {
 		padding: 20px 8px;
+	}
+
+	.header-mini {
+		.header-title, .input-cont {
+			display: none;
+
+		}
 	}
 
 	.header-body {
