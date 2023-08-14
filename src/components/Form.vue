@@ -81,10 +81,12 @@
 				>
 			</div>
 			<div class="confirm-cont">
-				<Button>
-					<img style="display: none" :src="fill" alt="" />
-					<span class="button-slot">განაცხადის გაგზავნა</span>
-				</Button>
+				<router-link to="success">
+					<Button>
+						<img style="display: none" :src="fill" alt="" />
+						<span class="button-slot">განაცხადის გაგზავნა</span>
+					</Button>
+				</router-link>
 			</div>
 		</div>
 	</div>

@@ -67,6 +67,9 @@
 		display: flex;
 		justify-content: space-between;
 		padding: 25px 38px;
+		@media only screen and (max-width: 600px) {
+			padding: 25px 8px;
+		}
 		&-left {
 			display: flex;
 			align-items: center;
@@ -137,6 +140,10 @@
 	}
 	.vacancy-header-left {
 		gap: 8px;
+		@media only screen and (max-width: 600px) {
+			gap: 5px;
+		}
+
 		.vacancy-header-img {
 			cursor: pointer;
 

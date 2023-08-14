@@ -5,7 +5,7 @@
 				>თქვენი განაცხადი მიღებულია, წარმატებებს გისურვებთ!</span
 			>
 			<img :src="mark" alt="" />
-			<p @click="$router.back()">ვაკანსიებზე დაბრუნება</p>
+			<p class="success-back" @click="$router.back()">ვაკანსიებზე დაბრუნება</p>
 		</div>
 	</div>
 </template>
@@ -16,6 +16,7 @@
 
 <style lang="scss" scoped>
 	.success-comp {
+		margin: 53px 83px 736px;
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -27,6 +28,7 @@
 		padding: 77px 38px;
 		@media only screen and (max-width: 600px) {
 			padding: 44px 38px;
+			margin: 24px 24px 216px;
 		}
 		&:hover {
 			box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.02);
@@ -44,7 +46,8 @@
 			font-size: 16px;
 		}
 	}
-	p {
+	.success-back {
+		cursor: pointer;
 		color: #0063bf;
 		font-family: var(--font-DejaVu);
 		font-size: 18px;

@@ -2,10 +2,12 @@
 	<div class="container">
 		<div class="leave-form-comp">
 			<div class="leave-form-inner">
-				<div class="leave-form-back" @click="$router.back()">
-					<img class="leave-form-img" :src="LeftArrow" alt="" />
-					<span class="leave-title">მიმდინარე ვაკანსიებზე დაბრუნება</span>
-				</div>
+				<slot>
+					<div class="leave-form-back" @click="$router.back()">
+						<img class="leave-form-img" :src="LeftArrow" alt="" />
+						<span class="leave-title">მიმდინარე ვაკანსიებზე დაბრუნება</span>
+					</div>
+				</slot>
 				<Button />
 			</div>
 			<div class="line"></div>
@@ -63,6 +65,9 @@
 			align-items: center;
 			justify-content: center;
 			gap: 8px;
+			@media only screen and (max-width: 600px) {
+				gap: 5px;
+			}
 			.leave-form-img {
 				cursor: pointer;
 				@media only screen and (max-width: 600px) {

@@ -1,6 +1,4 @@
-<template>
-	<LeaveForm />
-</template>
+<template><LeaveForm> </LeaveForm>/></template>
 
 <script setup>
 	import LeaveForm from '@/components/LeaveForm.vue';

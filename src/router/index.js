@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 import FormsView from '../views/FormsView.vue';
 import LeaveFormView from '@/views/LeaveFormView.vue';
+import success from '@/components/Success.vue';
 
 const routes = [
 	{
@@ -18,6 +19,11 @@ const routes = [
 		path: '/Leaveform/',
 		name: 'Leaveform',
 		component: LeaveFormView,
+	},
+	{
+		path: '/success/',
+		name: 'success',
+		component: success,
 	},
 ];
 
