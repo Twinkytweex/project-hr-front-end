@@ -1,7 +1,6 @@
 <template>
-	<Vacancy></Vacancy>
-	<Form />
-
+	<Vacancy> </Vacancy>
+	<Form></Form>
 </template>
 
 <script setup>
@@ -9,15 +8,12 @@
 	import Form from '@/components/Form.vue';
 	import { useRoute } from 'vue-router';
 	import { onBeforeMount } from 'vue';
+	const route = useRoute();
 
-	const route = useRoute()
-
-	onBeforeMount(()=>{
+	onBeforeMount(() => {
 		// fetch card
-		console.log(route.params.id)
-	})
-	
-	
+		console.log(route.params.id);
+	});
 </script>
 
 <style></style>

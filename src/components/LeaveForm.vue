@@ -63,9 +63,22 @@
 			align-items: center;
 			justify-content: center;
 			gap: 8px;
-			.leave-form-img,
+			.leave-form-img {
+				cursor: pointer;
+				@media only screen and (max-width: 600px) {
+					width: 17px;
+				}
+			}
 			.leave-title {
 				cursor: pointer;
+				@media only screen and (max-width: 600px) {
+					color: #000;
+					font-family: var(--font-DejaVu);
+					font-size: 14px;
+					font-style: normal;
+					font-weight: 400;
+					line-height: normal;
+				}
 			}
 		}
 		button {

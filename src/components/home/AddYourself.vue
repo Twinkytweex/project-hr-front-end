@@ -5,21 +5,15 @@
 				<span>ვერ იპოვე შესაფერისი ვაკანსია?</span>
 				<span>დაგვიტოვე რეზიუმე და ჩვენ დაგიკავშირდებით!</span>
 			</div>
-			<router-link to="Leaveform/"> <Button /></router-link>
+			<router-link to="Leaveform">
+				<Button />
+			</router-link>
 		</div>
 	</div>
 </template>
 
 <script setup>
 	import Button from '@/components/Button.vue';
-	// import { defineProps } from 'vue';
-
-	// const props = defineProps({
-	// 	card: {
-	// 		type: Object,
-	// 		required: true,
-	// 	},
-	// });
 </script>
 
 <style lang="scss" scoped>

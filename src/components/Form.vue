@@ -7,7 +7,7 @@
 						<label class="forms-name">სახელი </label>
 						<span class="red">*</span>
 					</div>
-					<input type="text" name="" id="" />
+					<input type="text" name="" id="" required />
 				</div>
 				<div class="forms-input-cont">
 					<div class="forms-input-title">
@@ -16,7 +16,6 @@
 					</div>
 					<input type="text" name="" id="" />
 				</div>
-
 				<div class="forms-input-cont">
 					<div class="forms-input-title">
 						<label class="forms-name">ტელეფონის ნომერი </label>
@@ -36,6 +35,7 @@
 			<span class="red">*</span>
 			<div class="upload-image-input" name="img">
 				<input
+					required
 					ref="inpUpload"
 					type="file"
 					name="document"
@@ -81,13 +81,18 @@
 				>
 			</div>
 			<div class="confirm-cont">
-				<Button :button="button" />
+				<Button>
+					<img style="display: none" :src="fill" alt="" />
+					<span class="button-slot">განაცხადის გაგზავნა</span>
+				</Button>
 			</div>
 		</div>
 	</div>
 </template>
 
 <script setup>
+	import fill from '@/assets/images/static/fill.svg';
+
 	import Button from '@/components/Button.vue';
 	import upload from '@/assets/images/upload.svg';
 	import { onMounted, ref } from 'vue';
@@ -250,5 +255,21 @@
 		display: flex;
 		justify-content: end;
 		padding-top: 32px;
+		@media only screen and (max-width: 600px) {
+			justify-content: center;
+			align-items: center;
+		}
+		.button-slot {
+			color: #fff;
+			font-family: var(--font-DejaVu);
+			font-size: 16px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: normal;
+
+			@media only screen and (max-width: 600px) {
+				font-size: 12px;
+			}
+		}
 	}
 </style>

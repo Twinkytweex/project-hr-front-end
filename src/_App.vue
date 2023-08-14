@@ -28,10 +28,7 @@
 
 	import Header from '@/components/home/Header.vue';
 	import Footer from '@/components/home/Footer.vue';
-
 	const component = ref(Header)
-
-
 	let name = "header"
 
 	function onChange() {

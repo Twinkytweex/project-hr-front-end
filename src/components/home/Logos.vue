@@ -75,6 +75,9 @@
 </script>
 
 <style lang="scss" scoped>
+	// animation cycle
+	// animation-direction: alternate;
+	// animation-iteration-count: infinite;
 	.logos-comp {
 		display: flex;
 		gap: 25px;

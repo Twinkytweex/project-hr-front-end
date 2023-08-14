@@ -1,12 +1,22 @@
 <template>
 	<button class="button-comp">
-		<img :src="fill" alt="" />
-		<span class="button-text"> განაცხადის შევსება </span>
+		<slot>
+			<img :src="fill" alt="" />
+			<span class="button-text"> განაცხადის შევსება </span>
+		</slot>
 	</button>
 </template>
 
 <script setup>
 	import fill from '@/assets/images/static/fill.svg';
+	// import { defineProps } from 'vue';
+
+	// const props = defineProps({
+	// 	button: {
+	// 		type: Object,
+	// 		required: true,
+	// 	},
+	// });
 </script>
 
 <style lang="scss" scoped>
@@ -26,7 +36,7 @@
 
 		.button-text {
 			color: #fff;
-			font-family: ' var(--font-DejaVu)';
+			font-family: var(--font-DejaVu);
 			font-size: 16px;
 			font-style: normal;
 			font-weight: 400;

@@ -1,6 +1,6 @@
 <template>
 	<Card v-for="(card, i) in cards" :card="card" :key="i" />
-	<AddYourself />
+	<AddYourself :button="button" />
 	<Logos />
 </template>
 

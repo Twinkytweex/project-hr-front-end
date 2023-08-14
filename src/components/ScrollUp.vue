@@ -3,7 +3,7 @@
 		<img
 			:class="state.scroll ? `up-down-svg up-down-svg-active` : `up-down-svg`"
 			@click="handleScrollUp"
-			:src="scrolUp"
+			:src="scrollUp"
 			alt=""
 		/>
 	</div>
@@ -11,7 +11,7 @@
 
 <script setup>
 	import { reactive, onBeforeMount } from 'vue';
-	import scrolUp from '@/assets/images/static/scrolUp.svg';
+	import scrollUp from '@/assets/images/static/scrollUp.svg';
 	const state = reactive({
 		scroll: false,
 		handleScroll() {
@@ -22,10 +22,9 @@
 			state.scroll = false;
 		},
 	});
-
 	function handleScrollUp() {
 		// document.body.scrollTop = document.documentElement.scrollTop = 0;
-		window.scrollTo({top: 0, behavior: 'smooth'});
+		window.scrollTo({ top: 0, behavior: 'smooth' });
 	}
 
 	onBeforeMount(() => window.addEventListener('scroll', state.handleScroll));

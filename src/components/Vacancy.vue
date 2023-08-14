@@ -8,7 +8,7 @@
 						>მიმდინარე ვაკანსიებზე დაბრუნება</span
 					>
 				</div>
-				<Button />
+				<Button class="button" />
 			</div>
 			<div class="line"></div>
 
@@ -79,7 +79,7 @@
 				line-height: normal;
 			}
 		}
-		button {
+		.button {
 			color: #fff;
 			cursor: pointer;
 			display: flex;
@@ -137,9 +137,24 @@
 	}
 	.vacancy-header-left {
 		gap: 8px;
-		.vacancy-header-img,
+		.vacancy-header-img {
+			cursor: pointer;
+
+			@media only screen and (max-width: 600px) {
+				width: 17px;
+			}
+		}
 		.vacancy-header-back {
 			cursor: pointer;
+
+			@media only screen and (max-width: 600px) {
+				color: #000;
+				font-family: var(--font-DejaVu);
+				font-size: 14px;
+				font-style: normal;
+				font-weight: 400;
+				line-height: normal;
+			}
 		}
 	}
 </style>
