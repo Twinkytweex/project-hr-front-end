@@ -7,8 +7,11 @@
 					<span class="vacancy-header-back"
 						>მიმდინარე ვაკანსიებზე დაბრუნება</span
 					>
+					{{ myvar }}
 				</div>
-				<Button icon="fill">განაცხადის შევსება </Button>
+				<Button icon="fill" @click="fillForm"
+					>განაცხადის შევსება
+				</Button>
 			</div>
 			<div class="line"></div>
 
@@ -49,7 +52,9 @@
 					<li>ციფრული დიზაინის შექმნა</li>
 					<li>ციფრული დიზაინის შექმნა</li>
 				</ul>
-				<Button />
+				<Button icon="fill" @click="fillForm">
+					განაცხადის შევსება</Button
+				>
 			</div>
 		</div>
 	</div>
@@ -61,6 +66,7 @@ import LeftArrow from '@/assets/images/static/LeftArrow.svg';
 import Card from '@/components/home/Card.vue';
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
+import { isMobile, myvar } from '@/store';
 
 const route = useRoute();
 
@@ -69,6 +75,17 @@ const card = computed(() => {
 		id: route.params.id
 	};
 });
+
+const fillForm = () => {
+	myvar.value = 115;
+
+	if (isMobile.value) {
+		console.log('route to');
+	} else {
+		const form_el = document.querySelector('.form-box');
+		form_el.scrollIntoView();
+	}
+};
 </script>
 
 <style lang="scss" scoped>

@@ -53,14 +53,8 @@ import location from '@/assets/images/static/location.svg';
 import time from '@/assets/images/static/time.svg';
 import arrow from '@/assets/images/static/arrow.svg';
 import { defineProps } from 'vue';
-import { ref, onMounted } from 'vue';
-import { ismobile } from '@/utils/ismobile';
+import { ref } from 'vue';
 
-const isMobile = ref(false);
-
-onMounted(() => {
-	ismobile() ? (isMobile.value = true) : (isMobile.value = false);
-});
 const props = defineProps({
 	vacancy_layout: {
 		type: Boolean,

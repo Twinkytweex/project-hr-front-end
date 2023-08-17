@@ -16,6 +16,13 @@
 import Header from '@/components/home/Header.vue';
 import Footer from '@/components/home/Footer.vue';
 import ScrollUp from '@/components/ScrollUp.vue';
+import { onMounted } from 'vue';
+import { ismobile } from './utils/ismobile';
+import { isMobile } from '@/store';
+
+onMounted(() => {
+	isMobile.value = ismobile();
+});
 </script>
 
 <style></style>
