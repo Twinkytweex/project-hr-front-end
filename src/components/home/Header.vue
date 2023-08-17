@@ -55,6 +55,7 @@
 		@media only screen and (max-width: 600px) {
 			padding: 25px 15px;
 			margin-bottom: 32px;
+			gap: 32px;
 		}
 		&::before {
 			content: '';

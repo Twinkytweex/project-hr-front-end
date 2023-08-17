@@ -2,6 +2,13 @@
 	<Header> </Header>
 	<router-view />
 	<ScrollUp />
+	<!-- <v-pagination
+		containerClass="pagination"
+		:pageRange="10"
+		:pageCount="Math.ceil(500 / 30)"
+		:clickHandler="pagiHandler"
+		:selectedPage="pageQuery"
+	/> -->
 	<Footer />
 </template>
 
