@@ -8,21 +8,22 @@
 						>მიმდინარე ვაკანსიებზე დაბრუნება</span
 					>
 				</div>
-				<Button class="button" />
+				<Button icon="fill">განაცხადის შევსება </Button>
 			</div>
 			<div class="line"></div>
 
 			<Card vacancy_layout :card="card" />
 
 			<div class="vacancy-description">
-				"გამომცემლობა პალიტრა L" "პალიტრა ჰოლდინგის" შვილობილი კომპანიაა,
-				რომელიც 2005 წელს დაარსდა და დღეს ქართულ საგამომცემლო სივრცეში ყველაზე
-				დიდ და წარმატებულ გამომცემლობას წარმოადგენს.გამომცემლობა ორიენტირებულია
-				ხარისხსა და სიახლეებზე. ჩვენ მკითხველს ჟანრობრივად მრავალფეროვან
-				ლიტერატურას, საკითხავის უდიდეს პალიტრას ვთავაზობთ. კლასიკურ
-				ლიტერატურასთან ერთად, აქტიურად გამოვცემთ თანამედროვე უცხოური პროზის
-				თარგმანებს, საბავშვო ლიტერატურას, ვცდილობთ, მაქსიმალურად ახლოს ვიყოთ
-				ქართველ მკითხველთან, მივცეთ საშუალება, თავად ჩაერთოს წიგნის შერჩევასა და
+				"გამომცემლობა პალიტრა L" "პალიტრა ჰოლდინგის" შვილობილი
+				კომპანიაა, რომელიც 2005 წელს დაარსდა და დღეს ქართულ საგამომცემლო
+				სივრცეში ყველაზე დიდ და წარმატებულ გამომცემლობას
+				წარმოადგენს.გამომცემლობა ორიენტირებულია ხარისხსა და სიახლეებზე.
+				ჩვენ მკითხველს ჟანრობრივად მრავალფეროვან ლიტერატურას, საკითხავის
+				უდიდეს პალიტრას ვთავაზობთ. კლასიკურ ლიტერატურასთან ერთად,
+				აქტიურად გამოვცემთ თანამედროვე უცხოური პროზის თარგმანებს,
+				საბავშვო ლიტერატურას, ვცდილობთ, მაქსიმალურად ახლოს ვიყოთ ქართველ
+				მკითხველთან, მივცეთ საშუალება, თავად ჩაერთოს წიგნის შერჩევასა და
 				საგამომცემლო პროცესში, იკითხოს მხოლოდ საუკეთესო.
 			</div>
 
@@ -55,127 +56,127 @@
 </template>
 
 <script setup>
-	import Button from '@/components/Button.vue';
-	import LeftArrow from '@/assets/images/static/LeftArrow.svg';
-	import Card from '@/components/home/Card.vue';
-	import { computed } from 'vue';
-	import { useRoute } from 'vue-router';
+import Button from '@/components/Button.vue';
+import LeftArrow from '@/assets/images/static/LeftArrow.svg';
+import Card from '@/components/home/Card.vue';
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
 
-	const route = useRoute();
+const route = useRoute();
 
-	const card = computed(() => {
-		return {
-			id: route.params.id,
-		};
-	});
+const card = computed(() => {
+	return {
+		id: route.params.id
+	};
+});
 </script>
 
 <style lang="scss" scoped>
-	.vacancy-comp {
-		padding: 34px 0px;
-		border-radius: 12px;
-		background: #fff;
-		box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.02);
+.vacancy-comp {
+	padding: 34px 0px;
+	border-radius: 12px;
+	background: #fff;
+	box-shadow: 0px 3px 11px 0px rgba(0, 0, 0, 0.02);
+}
+.vacancy-header {
+	display: flex;
+	justify-content: space-between;
+	padding: 25px 38px;
+	@media only screen and (max-width: 600px) {
+		padding: 25px 8px;
 	}
-	.vacancy-header {
+	&-left {
 		display: flex;
-		justify-content: space-between;
-		padding: 25px 38px;
-		@media only screen and (max-width: 600px) {
-			padding: 25px 8px;
-		}
-		&-left {
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			&-back {
-				font-family: var(--font-DejaVu);
-				font-size: 16px;
-				font-style: normal;
-				font-weight: 400;
-				line-height: normal;
-			}
-		}
-		.button {
-			color: #fff;
-			cursor: pointer;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			gap: 12px;
-			border-radius: 12px;
-			background: #0063bf;
-			padding: 16px 48px 16px 45px;
-			border: none;
-			@media only screen and (max-width: 600px) {
-				display: none;
-			}
+		align-items: center;
+		justify-content: center;
+		&-back {
+			font-family: var(--font-DejaVu);
+			font-size: 16px;
+			font-style: normal;
+			font-weight: 400;
+			line-height: normal;
 		}
 	}
-	.vacancy-description {
+	.button {
+		color: #fff;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 12px;
+		border-radius: 12px;
+		background: #0063bf;
+		padding: 16px 48px 16px 45px;
+		border: none;
+		@media only screen and (max-width: 600px) {
+			display: none;
+		}
+	}
+}
+.vacancy-description {
+	color: #000;
+	font-family: var(--font-DejaVu);
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: 200%; /* 32px */
+	text-align: justify;
+	padding: 42px 38px 56px;
+	@media only screen and (max-width: 600px) {
+		font-size: 14px;
+	}
+}
+.vacancy-conditions {
+	padding: 20px 38px;
+
+	li {
+		list-style-type: disc;
 		color: #000;
 		font-family: var(--font-DejaVu);
 		font-size: 16px;
 		font-style: normal;
 		font-weight: 400;
 		line-height: 200%; /* 32px */
-		text-align: justify;
-		padding: 42px 38px 56px;
 		@media only screen and (max-width: 600px) {
 			font-size: 14px;
 		}
 	}
-	.vacancy-conditions {
-		padding: 20px 38px;
+	.vacancy-actions {
+		color: #0063bf;
+		font-family: var(--font-DejaVu);
+		font-size: 18px;
+		font-style: normal;
+		font-weight: 400;
+		line-height: normal;
+		@media only screen and (max-width: 600px) {
+			font-size: 14px;
+		}
+	}
+}
+.vacancy-header-left {
+	gap: 8px;
+	@media only screen and (max-width: 600px) {
+		gap: 5px;
+	}
 
-		li {
-			list-style-type: disc;
+	.vacancy-header-img {
+		cursor: pointer;
+
+		@media only screen and (max-width: 600px) {
+			width: 17px;
+		}
+	}
+	.vacancy-header-back {
+		cursor: pointer;
+
+		@media only screen and (max-width: 600px) {
 			color: #000;
 			font-family: var(--font-DejaVu);
-			font-size: 16px;
-			font-style: normal;
-			font-weight: 400;
-			line-height: 200%; /* 32px */
-			@media only screen and (max-width: 600px) {
-				font-size: 14px;
-			}
-		}
-		.vacancy-actions {
-			color: #0063bf;
-			font-family: var(--font-DejaVu);
-			font-size: 18px;
+			font-size: 14px;
 			font-style: normal;
 			font-weight: 400;
 			line-height: normal;
-			@media only screen and (max-width: 600px) {
-				font-size: 14px;
-			}
 		}
 	}
-	.vacancy-header-left {
-		gap: 8px;
-		@media only screen and (max-width: 600px) {
-			gap: 5px;
-		}
-
-		.vacancy-header-img {
-			cursor: pointer;
-
-			@media only screen and (max-width: 600px) {
-				width: 17px;
-			}
-		}
-		.vacancy-header-back {
-			cursor: pointer;
-
-			@media only screen and (max-width: 600px) {
-				color: #000;
-				font-family: var(--font-DejaVu);
-				font-size: 14px;
-				font-style: normal;
-				font-weight: 400;
-				line-height: normal;
-			}
-		}
-	}
+}
 </style>

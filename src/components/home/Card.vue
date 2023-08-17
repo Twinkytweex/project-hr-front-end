@@ -21,7 +21,7 @@
 					</router-link>
 				</div>
 				<span class="card-action-logo">
-					<img :src="palitral" alt="" />
+					<img class="card-action-logo-img" :src="palitral" alt="" />
 				</span>
 				<span class="card-action-logo-vac" v-if="props.vacancy_layout">
 					<img :src="palitral" alt="" />
@@ -40,7 +40,7 @@
 					</div>
 				</div>
 				<div class="card-image-desktop" v-if="!props.vacancy_layout">
-					<img v-if="isMobile" :src="palitral" alt="" />
+					<img :src="palitral" alt="" />
 				</div>
 			</div>
 		</div>
@@ -187,8 +187,10 @@ const tags = ref([
 }
 .card-action-logo {
 	display: none;
+
 	@media only screen and (max-width: 600px) {
 		display: flex;
+		height: 20px;
 	}
 }
 .card-action {
