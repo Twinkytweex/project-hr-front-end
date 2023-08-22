@@ -2,13 +2,7 @@
 	<div class="container">
 		<div class="leave-form-comp">
 			<div class="leave-form-inner">
-				<div class="leave-form-back" @click="$router.back()">
-					<img class="leave-form-img" :src="LeftArrow" alt="" />
-					<span class="leave-title"
-						>მიმდინარე ვაკანსიებზე დაბრუნება</span
-					>
-				</div>
-
+				<BackToPage> მიმდინარე ვაკანსიებზე დაბრუნება </BackToPage>
 				<Button icon="fill">განაცხადის შევსება </Button>
 			</div>
 			<div class="line"></div>
@@ -40,7 +34,8 @@
 import Button from '@/components/Button.vue';
 import Logos from '@/components/home/Logos.vue';
 import Form from '@/components/Form.vue';
-import LeftArrow from '@/assets/images/static/LeftArrow.svg';
+
+import BackToPage from '@/components/BackToPage.vue';
 </script>
 
 <style lang="scss" scoped>
@@ -48,6 +43,7 @@ import LeftArrow from '@/assets/images/static/LeftArrow.svg';
 	border-radius: 12px;
 	background: #fff;
 	border: 0.5px solid #e9ebee;
+	padding-bottom: 100px;
 
 	margin-bottom: 36px;
 	height: 638px;
@@ -61,7 +57,7 @@ import LeftArrow from '@/assets/images/static/LeftArrow.svg';
 	justify-content: space-between;
 	padding: 25px 38px;
 	@media only screen and (max-width: 600px) {
-		padding: 25px 8px;
+		display: none;
 	}
 
 	.leave-form-back {
@@ -114,7 +110,10 @@ import LeftArrow from '@/assets/images/static/LeftArrow.svg';
 	}
 }
 .leave-form-text {
-	padding: 60px 38px 8px;
+	padding: 60px 38px 100px;
+	@media only screen and (max-width: 600px) {
+		padding: 12px 38px 8px;
+	}
 }
 .leave-comp {
 	display: flex;

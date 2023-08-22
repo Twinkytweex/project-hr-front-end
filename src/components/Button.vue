@@ -45,6 +45,7 @@ const props = defineProps({
 	border: none;
 	@media only screen and (max-width: 600px) {
 		padding: 12px 31px 12px 31px;
+
 	}
 
 	.button-text {

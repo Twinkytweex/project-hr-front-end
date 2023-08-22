@@ -3,7 +3,7 @@
 		<div class="add-comp">
 			<div class="add-info">
 				<span>ვერ იპოვე შესაფერისი ვაკანსია?</span>
-				<span>დაგვიტოვე რეზიუმე და ჩვენ დაგიკავშირდებით!</span>
+				<span class="add-comp-leave">დაგვიტოვე რეზიუმე და ჩვენ დაგიკავშირდებით!</span>
 			</div>
 			<router-link to="Leaveform">
 				<Button icon="fill">განაცხადის შევსება </Button>
@@ -43,6 +43,11 @@ import Button from '@/components/Button.vue';
 	@media only screen and (max-width: 600px) {
 		flex-direction: column;
 		padding: 24px;
+	}
+	&-leave{
+	@media only screen and (max-width: 600px) {
+
+text-align: center;}
 	}
 }
 

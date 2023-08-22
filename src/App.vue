@@ -1,28 +1,35 @@
 <template>
+<div></div>
 	<Header> </Header>
 	<router-view />
-	<ScrollUp />
-	<!-- <v-pagination
+	<ScrollUp /> 
+	<v-pagination
 		containerClass="pagination"
-		:pageRange="10"
-		:pageCount="Math.ceil(500 / 30)"
+		:pageRange="7"
+		:pageCount="Math.ceil(100 / 2)"
 		:clickHandler="pagiHandler"
 		:selectedPage="pageQuery"
-	/> -->
-	<Footer />
+	/>
+ <Footer />
+
+
+
 </template>
 
 <script setup>
+
 import Header from '@/components/home/Header.vue';
 import Footer from '@/components/home/Footer.vue';
 import ScrollUp from '@/components/ScrollUp.vue';
-import { onMounted } from 'vue';
-import { ismobile } from './utils/ismobile';
-import { isMobile } from '@/store';
+// import { isMobile } from '@/store';
 
-onMounted(() => {
-	isMobile.value = ismobile();
-});
+
+if (HTMLScriptElement.supports?.("importmap")) {
+	console.log("Browser supports import maps.");
+}
+
+
+ 
 </script>
 
 <style></style>

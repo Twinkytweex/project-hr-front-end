@@ -1,13 +1,21 @@
 <template>
 	<div class="container">
-		<div class="form-box">
+		<div class="form-box" >
 			<div class="forms-comp">
 				<div class="forms-input-cont">
 					<div class="forms-input-title">
-						<label class="forms-name">სახელი </label>
+						<label for="validationTooltip01" class="forms-name form-label"
+							>სახელი
+						</label>
 						<span class="red">*</span>
 					</div>
-					<input type="text" name="" id="" required />
+					<input
+						type="text"
+						name=""
+						id="validationTooltip01"
+
+		required=""
+					/>
 				</div>
 				<div class="forms-input-cont">
 					<div class="forms-input-title">
@@ -48,7 +56,7 @@
 				<label for="id_upload_cv">
 					<span class="upload-image-title"
 						>ჩააგდეთ რეზიუმე ან
-						<span class="title-upload">ათვირთეთ ფაილი</span></span
+						<span class="title-upload">ატვირთეთ ფაილი</span></span
 					>
 				</label>
 			</div>
@@ -85,7 +93,7 @@
 			</div>
 			<div class="confirm-cont">
 				<router-link to="success">
-					<Button> განაცხადის გაგზავნა </Button>
+					<Button > განაცხადის გაგზავნა </Button>
 				</router-link>
 			</div>
 		</div>

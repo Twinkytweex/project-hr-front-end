@@ -3,13 +3,15 @@
 		class="header-comp container"
 		:class="{ 'header-mini': route.name != 'home' }"
 	>
-		{{ myvar }}
 		<div class="header-logo">
 			<router-link to="/">
 				<img class="palitra-svg" :src="palitra" alt=""
 			/></router-link>
 		</div>
 		<div class="header-body">
+			<BackToPage v-if="route.name != 'home' && isMobile">
+				მიმდინარე ვაკანსიებზე დაბრუნება
+			</BackToPage>
 			<div class="header-title">
 				დასაქმდი პალიტრა ჰოლდინგში, <br />
 				შემოუერთდი ჩვენს გუნდს და გახდი დიდი ოჯახის წევრი!
@@ -27,7 +29,8 @@
 import { useRoute } from 'vue-router';
 import searchButton from '@/assets/images/searchButton.svg';
 import palitra from '@/assets/images/logos/palitra.svg';
-import { myvar } from '@/store';
+import BackToPage from '@/components/BackToPage.vue';
+import { isMobile } from '@/store';
 
 const route = useRoute();
 </script>
@@ -55,7 +58,7 @@ const route = useRoute();
 	margin-bottom: 55px;
 	background-image: url('@/assets/images/mainImg.svg');
 	@media only screen and (max-width: 600px) {
-		padding: 25px 15px;
+		padding: 29px 15px;
 		margin-bottom: 32px;
 		gap: 32px;
 	}

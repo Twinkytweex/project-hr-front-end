@@ -2,21 +2,15 @@
 	<div class="container">
 		<div class="vacancy-comp">
 			<div class="vacancy-header">
-				<div class="vacancy-header-left" @click="$router.back()">
-					<img class="vacancy-header-img" :src="LeftArrow" alt="" />
-					<span class="vacancy-header-back"
-						>მიმდინარე ვაკანსიებზე დაბრუნება</span
-					>
-					{{ myvar }}
-				</div>
-				<Button icon="fill" @click="fillForm"
+				<BackToPage v-if="!isMobile">
+					მიმდინარე ვაკანსიებზე დაბრუნება
+				</BackToPage>
+				<Button class="not-mobile" icon="fill" @click="fillForm"
 					>განაცხადის შევსება
 				</Button>
 			</div>
 			<div class="line"></div>
-
 			<Card vacancy_layout :card="card" />
-
 			<div class="vacancy-description">
 				"გამომცემლობა პალიტრა L" "პალიტრა ჰოლდინგის" შვილობილი
 				კომპანიაა, რომელიც 2005 წელს დაარსდა და დღეს ქართულ საგამომცემლო
@@ -53,8 +47,8 @@
 					<li>ციფრული დიზაინის შექმნა</li>
 				</ul>
 				<Button icon="fill" @click="fillForm">
-					განაცხადის შევსება</Button
-				>
+					განაცხადის შევსება
+				</Button>
 			</div>
 		</div>
 	</div>
@@ -62,11 +56,11 @@
 
 <script setup>
 import Button from '@/components/Button.vue';
-import LeftArrow from '@/assets/images/static/LeftArrow.svg';
+import BackToPage from '@/components/BackToPage.vue';
 import Card from '@/components/home/Card.vue';
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-import { isMobile, myvar } from '@/store';
+import { isMobile, displayVacancyForm } from '@/store';
 
 const route = useRoute();
 
@@ -77,10 +71,10 @@ const card = computed(() => {
 });
 
 const fillForm = () => {
-	myvar.value = 115;
-
 	if (isMobile.value) {
-		console.log('route to');
+		const vacancy_comp = document.querySelector('.vacancy-comp');
+		vacancy_comp.style.display = 'none';
+		displayVacancyForm.value = true;
 	} else {
 		const form_el = document.querySelector('.form-box');
 		form_el.scrollIntoView();
@@ -100,7 +94,8 @@ const fillForm = () => {
 	justify-content: space-between;
 	padding: 25px 38px;
 	@media only screen and (max-width: 600px) {
-		padding: 25px 8px;
+		display: none;
+		// padding: 25px 8px;
 	}
 	&-left {
 		display: flex;
@@ -167,32 +162,6 @@ const fillForm = () => {
 		line-height: normal;
 		@media only screen and (max-width: 600px) {
 			font-size: 14px;
-		}
-	}
-}
-.vacancy-header-left {
-	gap: 8px;
-	@media only screen and (max-width: 600px) {
-		gap: 5px;
-	}
-
-	.vacancy-header-img {
-		cursor: pointer;
-
-		@media only screen and (max-width: 600px) {
-			width: 17px;
-		}
-	}
-	.vacancy-header-back {
-		cursor: pointer;
-
-		@media only screen and (max-width: 600px) {
-			color: #000;
-			font-family: var(--font-DejaVu);
-			font-size: 14px;
-			font-style: normal;
-			font-weight: 400;
-			line-height: normal;
 		}
 	}
 }
