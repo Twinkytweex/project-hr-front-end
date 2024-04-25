@@ -10,6 +10,7 @@
 						<span class="red">*</span>
 					</div>
 					<input
+						v-model="formData.name"
 						type="text"
 						name=""
 						id="validationTooltip01"
@@ -22,21 +23,21 @@
 						<label class="forms-name">გვარი </label>
 						<span class="red">*</span>
 					</div>
-					<input type="text" name="" id="" />
+					<input v-model="formData.surname" type="text" name="" id="" />
 				</div>
 				<div class="forms-input-cont">
 					<div class="forms-input-title">
 						<label class="forms-name">ტელეფონის ნომერი </label>
 						<span class="red">*</span>
 					</div>
-					<input type="tel" name="" id="" />
+					<input v-model="formData.phoneNumber" type="tel" name="" id="" />
 				</div>
 				<div class="forms-input-cont">
 					<div class="forms-input-title">
 						<label class="forms-name">მეილი </label>
 						<span class="red">*</span>
 					</div>
-					<input type="text" name="" id="" />
+					<input v-model="formData.email" type="text" name="" id="" />
 				</div>
 			</div>
 			<label class="forms-name">რეზიუმე </label>
@@ -50,8 +51,9 @@
 					hidden
 					id="id_upload_cv"
 					@change="OnFileChange"
+
 				/>
-				<div v-for="f in files" :key="f.name">{{ f }}</div>
+				<div v-for="f in files" :key="f.name">{{ f.name }}</div>
 				<img class="upload-image" :src="upload" alt="" />
 				<label for="id_upload_cv">
 					<span class="upload-image-title"
@@ -93,7 +95,7 @@
 			</div>
 			<div class="confirm-cont">
 				<router-link to="success">
-					<Button > განაცხადის გაგზავნა </Button>
+					<Button @click="submitForm"> განაცხადის გაგზავნა </Button>
 				</router-link>
 			</div>
 		</div>
@@ -103,19 +105,80 @@
 <script setup>
 import Button from '@/components/Button.vue';
 import upload from '@/assets/images/upload.svg';
+import { useRoute } from 'vue-router';
 import { onMounted, ref } from 'vue';
 
 const inpUpload = ref(null);
 const files = ref([]);
+const route = useRoute();
+
+const formData = ref({
+	id: '',
+	name: '',
+	surname: '',
+	email: '',
+	phoneNumber: '',
+	file: null,
+});
 
 const OnFileChange = () => {
 	files.value = Array.from(inpUpload.value.files).map((f) => {
+		console.log(f)
 		return {
 			name: f.name,
-			type: f.type,
-			size: f.size
+			// type: f.type,
+			// size: f.size,
+
 		};
 	});
+};
+
+// const submitForm = async () => {
+// 	try {
+// 		fetch('http://127.0.0.1:8069/receive_vacancies', {
+// 			method: 'POST',
+// 			mode: 'no-cors',
+// 			headers: {
+// 				'Access-Control-Allow-Headers': '*',
+// 				'Access-Control-Allow-Origin': '*',
+// 				'Access-Control-Allow-Credentials': 'true',
+// 				'Content-Type': 'application/json; charset=utf-8',
+// 			},
+// 			body: JSON.stringify({
+// 				info: formData.value
+// 			}),
+// 		});
+// 		// console.log(formData.value)
+// 	} catch (error) {
+// 		console.error('Error submitting form:', error);
+// 	}
+// };
+
+const submitForm = async () => {
+    try {
+        if (!formData.value || !inpUpload.value.files || inpUpload.value.files.length === 0) {
+            console.error('Form data or file is missing.');
+            return;
+        }
+
+        const formDataToSend = new FormData();
+		formDataToSend.append('id', route.params.id || '');
+        formDataToSend.append('name', formData.value.name || '');
+        formDataToSend.append('surname', formData.value.surname || '');
+        formDataToSend.append('email', formData.value.email || '');
+        formDataToSend.append('phoneNumber', formData.value.phoneNumber || '');
+
+        // Append file data as binary
+        formDataToSend.append('file', inpUpload.value.files[0]);
+
+        await fetch('http://127.0.0.1:8069/receive_vacancies', {
+            method: 'POST',
+            body: formDataToSend
+        });
+
+    } catch (error) {
+        console.error('Error submitting form:', error);
+    }
 };
 
 onMounted(() => {});

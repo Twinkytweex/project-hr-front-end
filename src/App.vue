@@ -11,6 +11,7 @@
 		:selectedPage="pageQuery"
 	/>
  <Footer />
+<!--  Page Counter	-->
 
 
 

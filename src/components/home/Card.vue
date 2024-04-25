@@ -6,7 +6,7 @@
 					:to="{ name: 'form', params: { id: props.card.id } }"
 				>
 					<span class="card-action-title"
-						>გრაფიკული დიზაინერი ({{ card.id }})
+						>{{ card.title_name }}
 					</span>
 				</router-link>
 
@@ -27,7 +27,7 @@
 					<img :src="palitral" alt="" />
 				</span>
 			</div>
-			<div class="card-date">აქტიურია: 25.08.2023 - მდე</div>
+			<div class="card-date">{{ card.recruting_start_date }}</div>
 			<div class="card-bottom">
 				<div class="card-tags">
 					<div
