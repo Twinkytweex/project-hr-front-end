@@ -126,33 +126,10 @@ const OnFileChange = () => {
 		console.log(f)
 		return {
 			name: f.name,
-			// type: f.type,
-			// size: f.size,
-
 		};
 	});
 };
 
-// const submitForm = async () => {
-// 	try {
-// 		fetch('http://127.0.0.1:8069/receive_vacancies', {
-// 			method: 'POST',
-// 			mode: 'no-cors',
-// 			headers: {
-// 				'Access-Control-Allow-Headers': '*',
-// 				'Access-Control-Allow-Origin': '*',
-// 				'Access-Control-Allow-Credentials': 'true',
-// 				'Content-Type': 'application/json; charset=utf-8',
-// 			},
-// 			body: JSON.stringify({
-// 				info: formData.value
-// 			}),
-// 		});
-// 		// console.log(formData.value)
-// 	} catch (error) {
-// 		console.error('Error submitting form:', error);
-// 	}
-// };
 
 const submitForm = async () => {
     try {
