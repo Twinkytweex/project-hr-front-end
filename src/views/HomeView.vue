@@ -37,16 +37,14 @@
 <!--<style></style>-->
 
 <template>
-  <Card v-for="(card, i) in cards" :card="card" :key="i" />
-<!--  <Vacancy v-for="(card, i) in cards" :card="card" :key="i" />-->
-  <AddYourself :button="button" />
-  <Logos />
+	<Card v-for="(card, i) in cards" :card="card" :key="i" />
+	<AddYourself :button="button"/>
+	<Logos />
 </template>
 
 <script setup>
 import axios from 'axios';
 import Card from '@/components/home/Card.vue';
-// import Vacancy from '@/components/home/vacancy.vue';
 import AddYourself from '@/components/home/AddYourself.vue';
 import Logos from '@/components/home/Logos.vue';
 
@@ -59,8 +57,9 @@ const cards = ref([]);
 async function fetchData() {
 	try {
 		const response = await axios.get('http://127.0.0.1:8069/show_vacancies');
-		cards.value = response.data; // Update cards with the fetched data
-		console.log(cards.value)
+		cards.value = response.data;
+		// vacancy.value = response.data;
+
 	} catch (error) {
 		console.error('Error fetching data:', error);
 	}

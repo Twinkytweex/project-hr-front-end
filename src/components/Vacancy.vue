@@ -12,40 +12,17 @@
 			<div class="line"></div>
 			<Card vacancy_layout :card="card" />
 			<div class="vacancy-description">
-<!--				"გამომცემლობა პალიტრა L" "პალიტრა ჰოლდინგის" შვილობილი-->
-<!--				კომპანიაა, რომელიც 2005 წელს დაარსდა და დღეს ქართულ საგამომცემლო-->
-<!--				სივრცეში ყველაზე დიდ და წარმატებულ გამომცემლობას-->
-<!--				წარმოადგენს.გამომცემლობა ორიენტირებულია ხარისხსა და სიახლეებზე.-->
-<!--				ჩვენ მკითხველს ჟანრობრივად მრავალფეროვან ლიტერატურას, საკითხავის-->
-<!--				უდიდეს პალიტრას ვთავაზობთ. კლასიკურ ლიტერატურასთან ერთად,-->
-<!--				აქტიურად გამოვცემთ თანამედროვე უცხოური პროზის თარგმანებს,-->
-<!--				საბავშვო ლიტერატურას, ვცდილობთ, მაქსიმალურად ახლოს ვიყოთ ქართველ-->
-<!--				მკითხველთან, მივცეთ საშუალება, თავად ჩაერთოს წიგნის შერჩევასა და-->
-<!--				საგამომცემლო პროცესში, იკითხოს მხოლოდ საუკეთესო.-->
-				{{card}}
+				{{card.work_experience}}
 			</div>
-<!--			<router-link-->
-<!--				:to="{ name: 'form', params: { id: props.card.id } }"-->
-<!--			>-->
-<!--					<span class="card-action-title"-->
-<!--					>{{ card.main_duty }}-->
-<!--					</span>-->
-<!--			</router-link>-->
 
 			<div class="vacancy-conditions">
 				<span class="vacancy-actions">მოვალეობები</span>
 				<ul>
-					<li>ციფრული დიზაინის შექმნა</li>
-					<li>ციფრული დიზაინის შექმნა</li>
-					<li>ციფრული დიზაინის შექმნა</li>
-					<li>ციფრული დიზაინის შექმნა</li>
+					<li v-for="item in card.main_duty" :key="item">{{ item }}</li>
 				</ul>
 				<span class="vacancy-actions vacancy-requests">მოთხოვნები</span>
 				<ul>
-					<li>ციფრული დიზაინის შექმნა</li>
-					<li>ციფრული დიზაინის შექმნა</li>
-					<li>ციფრული დიზაინის შექმნა</li>
-					<li>ციფრული დიზაინის შექმნა</li>
+					<li v-for="item in card.required_skills" :key="item">{{ item }}</li>
 				</ul>
 				<span class="vacancy-actions vacancy-condit">პირობები</span>
 				<ul>
@@ -65,18 +42,57 @@
 <script setup>
 import Button from '@/components/Button.vue';
 import BackToPage from '@/components/BackToPage.vue';
-import Card from '@/components/home/Card.vue';
-import { computed } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { isMobile, displayVacancyForm } from '@/store';
+import axios from 'axios';
 
 const route = useRoute();
 
 const card = computed(() => {
 	return {
-		id: route.params.id
+		id: route.params.id,
+		work_experience: vacancy.value.work_experience,
+		required_knowledge: vacancy.value.required_knowledge,
+		required_skills: vacancy.value.required_skills,
+		main_duty: vacancy.value.main_duty,
 	};
 });
+
+const vacancy = ref({});
+async function fetchData(id) {
+    try {
+        const response = await axios.get('http://127.0.0.1:8069/show_vacancies');
+        const filteredData = response.data;
+
+        let foundItem = null;
+        for (let i = 0; i < filteredData.length; i++) {
+            if (String(filteredData[i].id) === id) {
+				console.log(filteredData[i])
+                foundItem = filteredData[i];
+                break;
+            }
+        }
+        if (foundItem) {
+            vacancy.value = {
+                work_experience: foundItem.work_experience,
+                required_knowledge: foundItem.required_knowledge,
+                required_skills: foundItem.required_skills,
+                main_duty: foundItem.main_duty
+            };
+        } else {
+            console.error('Vacancy with ID', id, 'not found');
+        }
+
+    } catch (error) {
+        console.error('Error fetching data:', error);
+    }
+}
+
+// Example usage:
+fetchData(route.params.id);
+
+// const {impData} = props;
 
 const fillForm = () => {
 	if (isMobile.value) {
@@ -88,6 +104,7 @@ const fillForm = () => {
 		form_el.scrollIntoView();
 	}
 };
+onMounted(fetchData);
 </script>
 
 <style lang="scss" scoped>
