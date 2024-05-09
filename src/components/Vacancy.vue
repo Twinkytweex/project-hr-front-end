@@ -5,8 +5,8 @@
 				<BackToPage v-if="!isMobile">
 					მიმდინარე ვაკანსიებზე დაბრუნება
 				</BackToPage>
-				<Button class="not-mobile" icon="fill" @click="fillForm"
-					>განაცხადის შევსება
+				<Button class="not-mobile" icon="fill" @click="fillForm">
+					განაცხადის შევსება
 				</Button>
 			</div>
 			<div class="line"></div>
@@ -26,10 +26,10 @@
 				</ul>
 				<span class="vacancy-actions vacancy-condit">პირობები</span>
 				<ul>
-					<li>ციფრული დიზაინის შექმნა</li>
-					<li>ციფრული დიზაინის შექმნა</li>
-					<li>ციფრული დიზაინის შექმნა</li>
-					<li>ციფრული დიზაინის შექმნა</li>
+					<li v-if="card.time_shift">{{card.time_shift}}</li>
+					<li v-if="card.working_hours">{{card.working_hours}}</li>
+					<li v-if="card.wage_net">ანაზღაურება {{card.wage_net}} ლარი</li>
+					<li v-if="card.bonus">ბონუსი</li>
 				</ul>
 				<Button icon="fill" @click="fillForm">
 					განაცხადის შევსება
@@ -56,6 +56,10 @@ const card = computed(() => {
 		required_knowledge: vacancy.value.required_knowledge,
 		required_skills: vacancy.value.required_skills,
 		main_duty: vacancy.value.main_duty,
+		bonus: vacancy.value.bonus,
+		wage_net: vacancy.value.wage_net,
+		time_shift: vacancy.value.time_shift,
+		working_hours: vacancy.value.working_hours
 	};
 });
 
@@ -78,7 +82,11 @@ async function fetchData(id) {
                 work_experience: foundItem.work_experience,
                 required_knowledge: foundItem.required_knowledge,
                 required_skills: foundItem.required_skills,
-                main_duty: foundItem.main_duty
+                main_duty: foundItem.main_duty,
+				bonus: foundItem.bonus,
+				wage_net: foundItem.wage_net,
+				time_shift: foundItem.time_shift,
+				working_hours: foundItem.working_hours
             };
         } else {
             console.error('Vacancy with ID', id, 'not found');

@@ -14,8 +14,7 @@
 						type="text"
 						name=""
 						id="validationTooltip01"
-
-		required=""
+						required
 					/>
 				</div>
 				<div class="forms-input-cont">
@@ -64,7 +63,7 @@
 			</div>
 			<div class="terms-con">
 				<div class="check-cont">
-					<input class="checkbox" type="checkbox" />
+					<input class="checkbox" type="checkbox" v-model="formData.check_box"/>
 					<div class="check-text-mobile">
 						<span class="check-text"
 							>ვეთანხმები ჩემი პირადი მონაცემების
@@ -94,9 +93,13 @@
 				>
 			</div>
 			<div class="confirm-cont">
-				<router-link to="success">
-					<Button @click="submitForm"> განაცხადის გაგზავნა </Button>
-				</router-link>
+				<Button @click="submitForm"> განაცხადის გაგზავნა </Button>
+<!--				<router-link to='success'>-->
+<!--					<Button @click="submitForm"> განაცხადის გაგზავნა </Button>-->
+<!--				</router-link>-->
+<!--				<router-link :to="formData.route">-->
+<!--					<Button @click="submitForm"> განაცხადის გაგზავნა </Button>-->
+<!--				</router-link>-->
 			</div>
 		</div>
 	</div>
@@ -119,6 +122,8 @@ const formData = ref({
 	email: '',
 	phoneNumber: '',
 	file: null,
+	route: '',
+	check_box: false
 });
 
 const OnFileChange = () => {
@@ -130,30 +135,37 @@ const OnFileChange = () => {
 	});
 };
 
+const showAlert = () => {
+	alert('გთხოვთ ვაკანსიის გამოსაგზავნად, შეავსოთ ყველა სავალდებულო ველი!')
+};
 
 const submitForm = async () => {
-    try {
-        if (!formData.value || !inpUpload.value.files || inpUpload.value.files.length === 0) {
-            console.error('Form data or file is missing.');
-            return;
-        }
+	try {
+		if (!formData.value || !inpUpload.value.files || inpUpload.value.files.length === 0) {
+			return showAlert();
+		}else if (formData.value.name === '' || formData.value.surname === '' || formData.value.email === '' || formData.value.phoneNumber === '' || formData.value.check_box === false) {
+			console.log(formData.value.name, formData.value.surname, formData.value.email, formData.value.phoneNumber)
+			return showAlert();
+		}else {
+			console.log('Sent Successfully')
+			const formDataToSend = new FormData();
+			formDataToSend.append('id', route.params.id || '');
+			formDataToSend.append('name', formData.value.name || '');
+			formDataToSend.append('surname', formData.value.surname || '');
+			formDataToSend.append('email', formData.value.email || '');
+			formDataToSend.append('phoneNumber', formData.value.phoneNumber || '');
 
-        const formDataToSend = new FormData();
-		formDataToSend.append('id', route.params.id || '');
-        formDataToSend.append('name', formData.value.name || '');
-        formDataToSend.append('surname', formData.value.surname || '');
-        formDataToSend.append('email', formData.value.email || '');
-        formDataToSend.append('phoneNumber', formData.value.phoneNumber || '');
+			// Append file data as binary
+			formDataToSend.append('file', inpUpload.value.files[0]);
 
-        // Append file data as binary
-        formDataToSend.append('file', inpUpload.value.files[0]);
+			await fetch('http://127.0.0.1:8069/receive_vacancies', {
+				method: 'POST',
+				body: formDataToSend
+			});
+		}
 
-        await fetch('http://127.0.0.1:8069/receive_vacancies', {
-            method: 'POST',
-            body: formDataToSend
-        });
 
-    } catch (error) {
+	} catch (error) {
         console.error('Error submitting form:', error);
     }
 };
