@@ -29,6 +29,7 @@
 					<li v-if="card.time_shift">{{card.time_shift}}</li>
 					<li v-if="card.working_hours">{{card.working_hours}}</li>
 					<li v-if="card.wage_net">ანაზღაურება {{card.wage_net}} ლარი</li>
+					<li v-if="card.wage_agreed">ანაზღაურება შეთანხმებით</li>
 					<li v-if="card.bonus">ბონუსი</li>
 				</ul>
 				<Button icon="fill" @click="fillForm">
@@ -58,6 +59,7 @@ const card = computed(() => {
 		main_duty: vacancy.value.main_duty,
 		bonus: vacancy.value.bonus,
 		wage_net: vacancy.value.wage_net,
+		wage_agreed: vacancy.value.wage_agreement,
 		time_shift: vacancy.value.time_shift,
 		working_hours: vacancy.value.working_hours
 	};
@@ -66,7 +68,7 @@ const card = computed(() => {
 const vacancy = ref({});
 async function fetchData(id) {
     try {
-        const response = await axios.get('http://127.0.0.1:8069/show_vacancies');
+        const response = await axios.get('http://192.168.0.104:8069/show_vacancies');
         const filteredData = response.data;
 
         let foundItem = null;
@@ -85,6 +87,7 @@ async function fetchData(id) {
                 main_duty: foundItem.main_duty,
 				bonus: foundItem.bonus,
 				wage_net: foundItem.wage_net,
+				wage_agreement: foundItem.wage_agreement,
 				time_shift: foundItem.time_shift,
 				working_hours: foundItem.working_hours
             };

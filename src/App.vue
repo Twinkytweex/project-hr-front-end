@@ -2,7 +2,8 @@
 <div></div>
 	<Header> </Header>
 	<router-view />
-	<ScrollUp /> 
+	<ScrollUp />
+<!-- გვერდები -->
 	<v-pagination
 		containerClass="pagination"
 		:pageRange="7"

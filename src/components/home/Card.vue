@@ -5,8 +5,8 @@
 				<router-link
 					:to="{ name: 'form', params: { id: props.card.id } }"
 				>
-					<span class="card-action-title"
-						>{{ card.title_name }}
+					<span class="card-action-title">
+						{{ card.title_name }}
 					</span>
 				</router-link>
 
@@ -40,7 +40,8 @@
 					</div>
 				</div>
 				<div class="card-image-desktop" v-if="!props.vacancy_layout">
-					<img :src="palitral" alt="" />
+<!--					<img :src="palitral" alt="" />-->
+					<img :src="card.picture" alt="" width="64" height="64"/>
 				</div>
 			</div>
 		</div>
@@ -74,7 +75,7 @@ const tags = ref([
 	},
 	{
 		type: 'duration',
-		text: 'სრული განაკვეთი',
+		text: props.card.time_shift,
 		icon: time
 	}
 ]);

@@ -158,10 +158,11 @@ const submitForm = async () => {
 			// Append file data as binary
 			formDataToSend.append('file', inpUpload.value.files[0]);
 
-			await fetch('http://127.0.0.1:8069/receive_vacancies', {
+			await fetch('http://192.168.0.104:8069/receive_vacancies', {
 				method: 'POST',
 				body: formDataToSend
 			});
+			window.location.href = '/success';
 		}
 
 
