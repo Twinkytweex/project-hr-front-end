@@ -15,7 +15,6 @@
 <!--  Page Counter	-->
 
 
-
 </template>
 
 <script setup>
@@ -24,7 +23,6 @@ import Header from '@/components/home/Header.vue';
 import Footer from '@/components/home/Footer.vue';
 import ScrollUp from '@/components/ScrollUp.vue';
 // import { isMobile } from '@/store';
-
 
 if (HTMLScriptElement.supports?.("importmap")) {
 	console.log("Browser supports import maps.");

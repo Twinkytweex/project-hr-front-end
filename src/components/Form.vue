@@ -49,10 +49,15 @@
 					name="document"
 					hidden
 					id="id_upload_cv"
+					multiple
 					@change="OnFileChange"
 
 				/>
-				<div v-for="f in files" :key="f.name">{{ f.name }}</div>
+				<div v-for="f in files" :key="f.name">
+					{{ f.name }} ({{f.type}}) -
+					{{ (f.size / 1024).toFixed(2) }}KB
+				</div>
+<!--				<div v-for="f in files" :key="f.name">{{ f.name }}</div>-->
 				<img class="upload-image" :src="upload" alt="" />
 				<label for="id_upload_cv">
 					<span class="upload-image-title"
@@ -123,17 +128,32 @@ const formData = ref({
 	phoneNumber: '',
 	file: null,
 	route: '',
-	check_box: false
+	check_box: false,
+	indexing: ''
 });
 
-const OnFileChange = () => {
-	files.value = Array.from(inpUpload.value.files).map((f) => {
-		console.log(f)
-		return {
+	// const OnFileChange = () => {
+	// 	console.log(files)
+	// 	const selectFiles = Array.from(inpUpload.value.files).map((f) => ({
+	// 		name: f.name,
+	// 		type: f.type,
+	// 		size: f.size
+	// 	}));
+	//
+	// 	files.value = [...files.value, ...selectFiles];
+	// };
+	const OnFileChange = () => {
+		console.log(files)
+		files.value = [];
+		files.value = Array.from(inpUpload.value.files).map((f) => ({
 			name: f.name,
-		};
-	});
-};
+			type: f.type,
+			size: f.size
+		}));
+
+		// Clear the input element so the same file can be re-uploaded if needed
+		inpUpload.value = '';
+	};
 
 const showAlert = () => {
 	alert('გთხოვთ ვაკანსიის გამოსაგზავნად, შეავსოთ ყველა სავალდებულო ველი!')
@@ -156,13 +176,20 @@ const submitForm = async () => {
 			formDataToSend.append('phoneNumber', formData.value.phoneNumber || '');
 
 			// Append file data as binary
-			formDataToSend.append('file', inpUpload.value.files[0]);
+			// formDataToSend.append('file', inpUpload.value.files[0]);
+			var numb = 0
+			Array.from(inpUpload.value.files).forEach((file, index) => {
+				formDataToSend.append(`file${index + 1}`, file);
+				numb += 1
+			});
+
+			formDataToSend.append('indexing', numb);
 
 			await fetch('http://192.168.0.104:8069/receive_vacancies', {
 				method: 'POST',
 				body: formDataToSend
 			});
-			window.location.href = '/success';
+			// window.location.href = '/success';
 		}
 
 
@@ -236,7 +263,7 @@ onMounted(() => {});
 	background: #fafdfe;
 	max-width: 1215px;
 	width: 100%;
-	height: 224px;
+	//height: 224px;
 	.upload-image-title {
 		font-family: var(--font-DejaVu);
 		font-size: 18px;
