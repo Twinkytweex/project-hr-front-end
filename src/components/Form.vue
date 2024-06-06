@@ -132,23 +132,13 @@ const formData = ref({
 	indexing: ''
 });
 
-	// const OnFileChange = () => {
-	// 	console.log(files)
-	// 	const selectFiles = Array.from(inpUpload.value.files).map((f) => ({
-	// 		name: f.name,
-	// 		type: f.type,
-	// 		size: f.size
-	// 	}));
-	//
-	// 	files.value = [...files.value, ...selectFiles];
-	// };
 	const OnFileChange = () => {
-		console.log(files)
 		files.value = [];
 		files.value = Array.from(inpUpload.value.files).map((f) => ({
 			name: f.name,
 			type: f.type,
-			size: f.size
+			size: f.size,
+			icon: f.icon
 		}));
 
 		// Clear the input element so the same file can be re-uploaded if needed
@@ -164,7 +154,6 @@ const submitForm = async () => {
 		if (!formData.value || !inpUpload.value.files || inpUpload.value.files.length === 0) {
 			return showAlert();
 		}else if (formData.value.name === '' || formData.value.surname === '' || formData.value.email === '' || formData.value.phoneNumber === '' || formData.value.check_box === false) {
-			console.log(formData.value.name, formData.value.surname, formData.value.email, formData.value.phoneNumber)
 			return showAlert();
 		}else {
 			console.log('Sent Successfully')
@@ -182,14 +171,13 @@ const submitForm = async () => {
 				formDataToSend.append(`file${index + 1}`, file);
 				numb += 1
 			});
-
 			formDataToSend.append('indexing', numb);
 
 			await fetch('http://192.168.0.104:8069/receive_vacancies', {
 				method: 'POST',
 				body: formDataToSend
 			});
-			// window.location.href = '/success';
+			window.location.href = '/success';
 		}
 
 

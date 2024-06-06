@@ -100,7 +100,7 @@ async function fetchData(id) {
     }
 }
 
-// Example usage:
+
 fetchData(route.params.id);
 
 // const {impData} = props;

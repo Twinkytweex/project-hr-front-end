@@ -41,7 +41,7 @@
 				</div>
 				<div class="card-image-desktop" v-if="!props.vacancy_layout">
 <!--					<img :src="palitral" alt="" />-->
-					<img :src="card.picture" alt="" width="64" height="64"/>
+					<img :src="card.picture" alt="" class="image-show"/>
 				</div>
 			</div>
 		</div>
@@ -220,5 +220,9 @@ const tags = ref([
 .none_border {
 	border: unset;
 	padding: 20px 38px;
+}
+.image-show{
+	max-height: 64px;
+	max-width: 64px;
 }
 </style>
