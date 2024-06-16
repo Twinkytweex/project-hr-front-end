@@ -14,7 +14,7 @@ import fill from '@/assets/images/static/fill.svg';
 const icons = {
 	fill
 };
-
+// dad
 const props = defineProps({
 	icon: {
 		type: String,
