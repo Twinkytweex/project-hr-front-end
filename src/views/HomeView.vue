@@ -57,7 +57,8 @@ const cards = ref([]);
 async function fetchData() {
 	try {
 		// const response = await axios.get('http://127.0.0.1:8069/show_vacancies');
-		const response = await axios.get('http://192.168.0.104:8069/show_vacancies');
+		// const response = await axios.get('http://192.168.0.104:8069/show_vacancies');
+		const response = await axios.get('http://192.168.120.6:8069/show_vacancies');
 		cards.value = response.data;
 		// vacancy.value = response.data;
 

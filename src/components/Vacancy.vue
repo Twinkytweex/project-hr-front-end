@@ -68,7 +68,8 @@ const card = computed(() => {
 const vacancy = ref({});
 async function fetchData(id) {
     try {
-        const response = await axios.get('http://192.168.0.104:8069/show_vacancies');
+        // const response = await axios.get('http://192.168.0.104:8069/show_vacancies');
+        const response = await axios.get('http://192.168.120.6/show_vacancies');
         const filteredData = response.data;
 
         let foundItem = null;
