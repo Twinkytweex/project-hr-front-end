@@ -17,7 +17,7 @@ const logos = ref([]);
 async function fetchData() {
 	try {
 		// const response = await axios.get('http://192.168.0.106:8069/show_company_img');
-		const response = await axios.get('http://192.168.120.6/show_vacancies');
+		const response = await axios.get('http://192.168.120.6/show_company_img');
 		logos.value = response.data;
 		console.log('gamovida?', logos)
 	} catch (error) {
