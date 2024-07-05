@@ -1,10 +1,12 @@
 <template>
 	<div class="container">
 		<div class="vacancy-comp">
+			<h1 class="vacancy-title">{{ card.title_name }}</h1>
 			<div class="vacancy-header">
 				<BackToPage v-if="!isMobile">
 					მიმდინარე ვაკანსიებზე დაბრუნება
 				</BackToPage>
+
 				<Button class="not-mobile" icon="fill" @click="fillForm">
 					განაცხადის შევსება
 				</Button>
@@ -53,6 +55,7 @@ const route = useRoute();
 const card = computed(() => {
 	return {
 		id: route.params.id,
+		title_name:vacancy.value.title_name,
 		work_experience: vacancy.value.work_experience,
 		required_knowledge: vacancy.value.required_knowledge,
 		required_skills: vacancy.value.required_skills,
@@ -68,7 +71,7 @@ const card = computed(() => {
 const vacancy = ref({});
 async function fetchData(id) {
     try {
-        // const response = await axios.get('http://192.168.0.104:8069/show_vacancies');
+        // const response = await axios.get('http://192.168.0.106:8069/show_vacancies');
         const response = await axios.get('http://192.168.120.6/show_vacancies');
         const filteredData = response.data;
 
@@ -90,7 +93,8 @@ async function fetchData(id) {
 				wage_net: foundItem.wage_net,
 				wage_agreement: foundItem.wage_agreement,
 				time_shift: foundItem.time_shift,
-				working_hours: foundItem.working_hours
+				working_hours: foundItem.working_hours,
+				title_name:foundItem.title_name
             };
         } else {
             console.error('Vacancy with ID', id, 'not found');
@@ -161,6 +165,15 @@ onMounted(fetchData);
 			display: none;
 		}
 	}
+}
+.vacancy-title {
+	color: #0063bf;
+	font-family: var(--font-DejaVu);
+	font-size: 30px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	text-align: center;
 }
 .vacancy-description {
 	color: #000;

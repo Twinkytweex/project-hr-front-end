@@ -173,7 +173,7 @@ const submitForm = async () => {
 			});
 			formDataToSend.append('indexing', numb);
 
-			// await fetch('http://192.168.0.104:8069/receive_vacancies', {
+			// await fetch('http://192.168.0.106:8069/receive_vacancies', {
 			// 	method: 'POST',
 			// 	body: formDataToSend
 			// });
