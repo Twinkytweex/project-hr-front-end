@@ -1,32 +1,109 @@
+<!--<template>-->
+<!--	<div class="container">-->
+<!--		<div class="logos-comp">-->
+<!--			<a href="#url" v-for="(logo, i) in logos" :key="i">-->
+<!--				<img :src="logo.picture" alt="" class="carousel-images"/>-->
+<!--			</a>-->
+<!--		</div>-->
+<!--	</div>-->
+<!--</template>-->
+
+<!--<script setup>-->
+<!--import { onMounted, ref } from 'vue';-->
+<!--import axios from 'axios';-->
+
+<!--const logos = ref([]);-->
+
+<!--async function fetchData() {-->
+<!--	try {-->
+<!--		const response = await axios.get('http://127.0.0.1:8069/show_company_img');-->
+<!--		// const response = await axios.get('http://192.168.0.106:8069/show_company_img');-->
+<!--		// const response = await axios.get('http://192.168.120.6/show_company_img');-->
+<!--		logos.value = response.data;-->
+<!--		console.log('gamovida?', logos)-->
+<!--	} catch (error) {-->
+<!--		console.error('Error fetching data:', error);-->
+<!--	}-->
+<!--}-->
+
+<!--// Call fetchData when the component is mounted-->
+<!--onMounted(fetchData);-->
+<!--</script>-->
 <template>
 	<div class="container">
 		<div class="logos-comp">
 			<a href="#url" v-for="(logo, i) in logos" :key="i">
-				<img :src="logo.picture" alt="" class="carousel-images"/>
+				<img :src="logo.icon" alt="" />
 			</a>
 		</div>
 	</div>
 </template>
 
 <script setup>
-import { onMounted, ref } from 'vue';
-import axios from 'axios';
+import printarea from '@/assets/images/logos/printarea.svg';
+import biblusi from '@/assets/images/logos/biblusi.svg';
+import palital from '@/assets/images/logos/palitral.svg';
+import radiopalitra from '@/assets/images/logos/radiopalitra.svg';
+import flyge from '@/assets/images/logos/flyge.svg';
+import hotsale from '@/assets/images/logos/hotsale.svg';
+import { ref } from 'vue';
 
-const logos = ref([]);
-
-async function fetchData() {
-	try {
-		// const response = await axios.get('http://192.168.0.106:8069/show_company_img');
-		const response = await axios.get('http://192.168.120.6/show_company_img');
-		logos.value = response.data;
-		console.log('gamovida?', logos)
-	} catch (error) {
-		console.error('Error fetching data:', error);
+const logos = ref([
+	{
+		icon: printarea
+	},
+	{
+		icon: biblusi
+	},
+	{
+		icon: palital
+	},
+	{
+		icon: radiopalitra
+	},
+	{
+		icon: flyge
+	},
+	{
+		icon: hotsale
+	},
+	{
+		icon: printarea
+	},
+	{
+		icon: biblusi
+	},
+	{
+		icon: palital
+	},
+	{
+		icon: radiopalitra
+	},
+	{
+		icon: flyge
+	},
+	{
+		icon: hotsale
+	},
+	{
+		icon: printarea
+	},
+	{
+		icon: biblusi
+	},
+	{
+		icon: palital
+	},
+	{
+		icon: radiopalitra
+	},
+	{
+		icon: flyge
+	},
+	{
+		icon: hotsale
 	}
-}
-
-// Call fetchData when the component is mounted
-onMounted(fetchData);
+]);
 </script>
 
 <style lang="scss" scoped>
