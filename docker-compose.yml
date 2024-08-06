@@ -14,7 +14,8 @@ services:
       - HOST=0.0.0.0  # Ensure the server listens on all network interfaces
     networks:
       - default
-
+    restart: always
+    
 networks:
   default:
     driver: bridge
