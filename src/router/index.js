@@ -12,6 +12,11 @@ const routes = [
 		component: HomeView,
 	},
 	{
+		path: '/company/:id/',
+		name: 'company',
+		component: CompanyView
+	},
+	{
 		path: '/form/:id/',
 		name: 'form',
 		component: FormsView,
@@ -24,12 +29,7 @@ const routes = [
 	{
 		path: '/success/',
 		name: 'success',
-		component: Success,
-	},
-	{
-		path: '/company/:id/',
-		name: 'company',
-		component: CompanyView,
+		component: Success
 	},
 ];
 

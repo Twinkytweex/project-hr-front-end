@@ -41,7 +41,9 @@
 				</div>
 				<div class="card-image-desktop" v-if="!props.vacancy_layout">
 <!--					<img :src="palitral" alt="" />-->
-					<img :src="card.picture" alt="" class="image-show"/>
+					<a :href="'/company/' + props.card.company_id">
+						<img :src="card.picture" alt="" class="image-show"/>
+					</a>
 				</div>
 			</div>
 		</div>
