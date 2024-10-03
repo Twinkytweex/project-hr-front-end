@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue';
 import FormsView from '../views/FormsView.vue';
 import LeaveFormView from '@/views/LeaveFormView.vue';
 import Success from '@/components/Success.vue';
+import CompanyView from '@/views/CompanyView.vue';
 
 const routes = [
 	{
@@ -24,6 +25,11 @@ const routes = [
 		path: '/success/',
 		name: 'success',
 		component: Success,
+	},
+	{
+		path: '/company/:id/',
+		name: 'company',
+		component: CompanyView,
 	},
 ];
 
