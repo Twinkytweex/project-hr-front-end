@@ -173,11 +173,15 @@ const submitForm = async () => {
 			});
 			formDataToSend.append('indexing', numb);
 
-			// await fetch('http://192.168.0.106:8069/receive_vacancies', {
+			// await fetch('http://172.18.0.1:8069/receive_vacancies', {
 			// 	method: 'POST',
 			// 	body: formDataToSend
 			// });
-			await fetch('http://192.168.120.6/receive_vacancies', {
+			// await fetch('http://192.168.120.6/receive_vacancies', {
+			// 	method: 'POST',
+			// 	body: formDataToSend
+			// });
+			await fetch('http://hr.palitra.ge/receive_vacancies', {
 				method: 'POST',
 				body: formDataToSend
 			});

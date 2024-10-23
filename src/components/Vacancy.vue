@@ -72,7 +72,9 @@ const vacancy = ref({});
 async function fetchData(id) {
     try {
         // const response = await axios.get('http://192.168.0.106:8069/show_vacancies');
-        const response = await axios.get('http://192.168.120.6/show_vacancies');
+        // const response = await axios.get('http://192.168.120.6/show_vacancies');
+        // const response = await axios.get('http://172.18.0.1:8069/show_vacancies');
+        const response = await axios.get('http://hr.palitra.ge/show_vacancies');
         const filteredData = response.data;
 
         let foundItem = null;
@@ -99,6 +101,7 @@ async function fetchData(id) {
         } else {
             console.error('Vacancy with ID', id, 'not found');
         }
+		console.log('Vacancy SUCCESS')
 
     } catch (error) {
         console.error('Error fetching data:', error);
