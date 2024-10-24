@@ -24,9 +24,6 @@ import Footer from '@/components/home/Footer.vue';
 import ScrollUp from '@/components/ScrollUp.vue';
 import { onMounted, ref } from 'vue';
 import axios from 'axios';
-// import { computed, onMounted, ref } from 'vue';
-// import axios from 'axios';
-// import { isMobile } from '@/store';
 
 if (HTMLScriptElement.supports?.("importmap")) {
 	console.log("Browser supports import maps.");
@@ -44,7 +41,6 @@ async function fetchData() {
 		pages.value = response.data;
 		console.log('APP SUCCESS', pages)
 	} catch (error) {
-		console.log('Error --------> ', pages)
 		console.error('Error fetching data:', error);
 	}
 }

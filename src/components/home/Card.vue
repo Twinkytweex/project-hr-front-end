@@ -42,7 +42,10 @@
 				<div class="card-image-desktop" v-if="!props.vacancy_layout">
 <!--					<img :src="palitral" alt="" />-->
 					<a :href="'/company/' + props.card.company_id">
-						<img :src="card.picture" alt="" class="image-show"/>
+<!--			API GATISHULIA DROEBIT SURATZE			-->
+<!--						<img :src="card.picture" alt="" class="image-show"/>-->
+<!--						{{companyLogo }}-->
+							<img :src='companyLogo' alt="" class="image-show"/>
 					</a>
 				</div>
 			</div>
@@ -56,7 +59,52 @@ import location from '@/assets/images/static/location.svg';
 import time from '@/assets/images/static/time.svg';
 import arrow from '@/assets/images/static/arrow.svg';
 import { defineProps } from 'vue';
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
+
+
+const logoMap = {
+	23: require('@/assets/palitra-logo/axali-ambebi.jpg'),
+	15: require('@/assets/palitra-logo/gamomcemloba-lelo.jpg'),
+	24: require('@/assets/palitra-logo/palitral.png'),
+	26: require('@/assets/palitra-logo/adline.png'),
+	8: require('@/assets/palitra-logo/elvamarket.png'),
+	36: require('@/assets/palitra-logo/winepack.png'),
+	14: require('@/assets/palitra-logo/interlogistic.png'),
+	// 44: require('@/assets/palitra-logo/'),xcopmany
+	// 47: require('@/assets/palitra-logo/adline.png'),ekodevelopment
+	13: require('@/assets/palitra-logo/colorgroup-colorpress.png'),
+	// 48: require('@/assets/palitra-logo/'),litbox
+	// 45: require('@/assets/palitra-logo/'),mziani veli
+	// 49: require('@/assets/palitra-logo/adline.png'),niusrumi 2
+	// 46: require('@/assets/palitra-logo/adline.png'),specmontaji
+	12: require('@/assets/palitra-logo/colorgroup-colorpress.png'),
+	10: require('@/assets/palitra-logo/logisticcenter.png'),
+	27: require('@/assets/palitra-logo/mediakvirispalitra.png'),
+	9: require('@/assets/palitra-logo/merkuri.png'),
+	42: require('@/assets/palitra-logo/new_pack.jpeg'),
+	43: require('@/assets/palitra-logo/new_print.jpeg'),
+	22: require('@/assets/palitra-logo/news_room.png'),
+	21: require('@/assets/palitra-logo/palitra_news.png'),
+	37: require('@/assets/palitra-logo/palitra_studio.png'),
+	18: require('@/assets/palitra-logo/palitraholding.png'),
+	35: require('@/assets/palitra-logo/printarea.png'),
+	40: require('@/assets/palitra-logo/radio_bomond.png'),
+	20: require('@/assets/palitra-logo/radio_palitra.png'),
+	19: require('@/assets/palitra-logo/reshenal_solution_hotsale.png'),
+	16: require('@/assets/palitra-logo/samartlisjgufi.png'),
+	32: require('@/assets/palitra-logo/saswavlocentripalitra.png'),
+	25: require('@/assets/palitra-logo/saqmege.png'),
+	39: require('@/assets/palitra-logo/translatege.png'),
+	41: require('@/assets/palitra-logo/favoritistili.png'),
+	17: require('@/assets/palitra-logo/fasadi.png'),
+	38: require('@/assets/palitra-logo/flyge.png'),
+	11: require('@/assets/palitra-logo/geopaperjep.png'),
+	1: require('@/assets/palitra-logo/kriala.jpeg'),
+};
+
+const companyLogo = computed(() => {
+  return logoMap[props.card.company_id];
+});
 
 const props = defineProps({
 	vacancy_layout: {
