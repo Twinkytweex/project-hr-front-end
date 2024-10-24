@@ -60,7 +60,7 @@ async function fetchData() {
 		// const response = await axios.get('http://192.168.0.106:8069/show_vacancies');
 		// const response = await axios.get('http://192.168.120.6/show_vacancies');
 		// const response = await axios.get('http://172.18.0.1:8069/show_vacancies');
-		const response = await axios.get('http://hr.palitra.ge/show_vacancies');
+		const response = await axios.get('https://hr.palitra.ge/show_vacancies');
 		cards.value = response.data;
 		// vacancy.value = response.data;
 		console.log('HOME VIEW SUCCESS')

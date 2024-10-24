@@ -181,7 +181,7 @@ const submitForm = async () => {
 			// 	method: 'POST',
 			// 	body: formDataToSend
 			// });
-			await fetch('http://hr.palitra.ge/receive_vacancies', {
+			await fetch('https://hr.palitra.ge/receive_vacancies', {
 				method: 'POST',
 				body: formDataToSend
 			});
