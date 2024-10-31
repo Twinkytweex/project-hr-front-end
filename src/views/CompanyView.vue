@@ -14,7 +14,9 @@
 
 		<div class="card-comp company-card" v-for="item in vacancy" :key="item">
 			<div class="card-title">
-				<span class="card-action-title">{{ item.title_name }}</span>
+				<a :href="'/form/' + item.job_id">
+					<span class="card-action-title">{{ item.title_name }}</span>
+				</a>
 				<div class="card-action" v-if="!props.vacancy_layout">
 					<a :href="'/form/' + item.job_id">
 						<span class="card-action-title action-font">შეავსე განაცხადი <img :src="arrow" alt=""/></span>
