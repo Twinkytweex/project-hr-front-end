@@ -20,7 +20,7 @@
 					</a>
 				</div>
 				<span class="card-action-logo">
-					<img class="card-action-logo-img" :src="palitral" alt="" />
+					<img class="image-show" :src="companyLogo" alt="" />
 				</span>
 				<span class="card-action-logo-vac" v-if="props.vacancy_layout">
 					<img :src="palitral" alt="" />

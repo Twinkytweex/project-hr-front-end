@@ -17,11 +17,11 @@
 						<span class="card-action-title action-font"
 							>შეავსე განაცხადი</span
 						>
-						<img :src="arrow" alt="" />
+						<img :src="arrow" alt="Vacany-palitra" />
 					</router-link>
 				</div>
 				<span class="card-action-logo">
-					<img class="card-action-logo-img" :src="palitral" alt="" />
+					<img class="image-show" :src="companyLogo" alt="" />
 				</span>
 				<span class="card-action-logo-vac" v-if="props.vacancy_layout">
 					<img :src="palitral" alt="" />
@@ -35,7 +35,7 @@
 						v-for="(tag, i) in tags"
 						:key="i"
 					>
-						<img :src="tag.icon" alt="" />
+						<img :src="tag.icon" alt="Palitra Holding Company Tags" />
 						<span>{{ tag.text }}</span>
 					</div>
 				</div>
@@ -45,7 +45,7 @@
 <!--			API GATISHULIA DROEBIT SURATZE			-->
 <!--						<img :src="card.picture" alt="" class="image-show"/>-->
 <!--						{{companyLogo }}-->
-							<img :src='companyLogo' alt="" class="image-show"/>
+							<img :src='companyLogo' alt="Palitra Holding Companies" class="image-show"/>
 					</a>
 				</div>
 			</div>
