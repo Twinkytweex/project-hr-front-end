@@ -1,4 +1,5 @@
 <template>
+	<HeaderComponent />
 	<div class="container">
 		<div class="vacancy-comp">
 			<h1 class="vacancy-title">{{ card.title_name }}</h1>
@@ -49,6 +50,7 @@ import { computed, onMounted, ref } from 'vue';
 import { useRoute } from 'vue-router';
 import { isMobile, displayVacancyForm } from '@/store';
 import axios from 'axios';
+import HeaderComponent from '@/components/home/Header.vue';
 
 const route = useRoute();
 

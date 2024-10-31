@@ -1,4 +1,5 @@
 <template>
+	<HeaderComponent />
 	<div class="company-page container">
 		<img
 			class="company-page-img"
@@ -60,6 +61,7 @@ import {  onMounted, ref, watch, computed } from 'vue';
 import AddYourself from '@/components/home/AddYourself.vue';
 import axios from 'axios';
 import { useRoute } from 'vue-router';
+import HeaderComponent from '@/components/home/Header.vue';
 
 const logoMap = {
 	23: require('@/assets/palitra-logo/axali-ambebi.jpg'),
