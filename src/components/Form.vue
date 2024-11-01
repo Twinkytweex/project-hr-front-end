@@ -15,6 +15,7 @@
 						name=""
 						id="validationTooltip01"
 						required
+						placeholder="სახელი/Name"
 					/>
 				</div>
 				<div class="forms-input-cont">
@@ -22,21 +23,21 @@
 						<label class="forms-name">გვარი </label>
 						<span class="red">*</span>
 					</div>
-					<input v-model="formData.surname" type="text" name="" id="" />
+					<input v-model="formData.surname" type="text" name="" id="" placeholder="გვარი/Surname"/>
 				</div>
 				<div class="forms-input-cont">
 					<div class="forms-input-title">
 						<label class="forms-name">ტელეფონის ნომერი </label>
 						<span class="red">*</span>
 					</div>
-					<input v-model="formData.phoneNumber" type="tel" name="" id="" />
+					<input v-model="formData.phoneNumber" type="tel" name="" id="" placeholder="5xxxxxxxx"/>
 				</div>
 				<div class="forms-input-cont">
 					<div class="forms-input-title">
 						<label class="forms-name">მეილი </label>
 						<span class="red">*</span>
 					</div>
-					<input v-model="formData.email" type="text" name="" id="" />
+					<input v-model="formData.email" type="text" name="" id="" placeholder="example@gmail.com"/>
 				</div>
 			</div>
 			<label class="forms-name">რეზიუმე </label>
@@ -149,12 +150,36 @@ const showAlert = () => {
 	alert('გთხოვთ ვაკანსიის გამოსაგზავნად, შეავსოთ ყველა სავალდებულო ველი!')
 };
 
+const showAlertNumber = () => {
+	alert('ნომერი უნდა იყოს 9 ნიშნა!')
+};
+
+const showAlertEmail = () => {
+	alert('გთხოვთ ვაკანსიის გამოსაგზავნად, ჩაწეროთ სწორი მეილი!')
+};
+
+// Email validation function
+function validateEmail(email) {
+    const emailRegex = /^[a-zA-Z]+[a-zA-Z0-9._%+-]*@[a-zA-Z]+\.[a-zA-Z]{2,}$/; // Basic email validation regex
+    return emailRegex.test(email);
+}
+
+// Phone number validation function
+function validatePhoneNumber(phoneNumber) {
+    const phoneRegex = /^\d{9}$/; // Regex to check if phone number is exactly 9 digits
+    return phoneRegex.test(phoneNumber);
+}
+
 const submitForm = async () => {
 	try {
 		if (!formData.value || !inpUpload.value.files || inpUpload.value.files.length === 0) {
 			return showAlert();
 		}else if (formData.value.name === '' || formData.value.surname === '' || formData.value.email === '' || formData.value.phoneNumber === '' || formData.value.check_box === false) {
 			return showAlert();
+		}else if (!validateEmail(formData.value.email)){
+			return showAlertEmail();
+		}else if (!validatePhoneNumber(formData.value.phoneNumber)){
+			return showAlertNumber();
 		}else {
 			console.log('Sent Successfully')
 			const formDataToSend = new FormData();
