@@ -32,9 +32,16 @@
 <template>
 	<div class="container">
 		<div class="logos-comp">
-			<a href="#url" v-for="(logo, i) in logos" :key="i">
-				<img :src="logo.icon" alt="" />
-			</a>
+			<div class="logo-wrapper">
+				<!-- First set of logos -->
+				<a href="#url" v-for="(logo, i) in logos" :key="i">
+					<img :src="logo.icon" alt="" class="carousel-images" />
+				</a>
+				<!-- Duplicate set of logos for seamless scrolling -->
+				<a href="#url" v-for="(logo, i) in logos" :key="'dup-' + i">
+					<img :src="logo.icon" alt="" class="carousel-images" />
+				</a>
+			</div>
 		</div>
 	</div>
 </template>
@@ -106,50 +113,33 @@ const logos = ref([
 ]);
 </script>
 
-<style lang="scss" scoped>
-// animation cycle
-// animation-direction: alternate;
-// animation-iteration-count: infinite;
-// @keyframes animation-css {
-// 	from {
-// 		transform: translate(0px, 0px);
-// 	}
-// 	25% {
-// 	}
-// 	50% {
-// 	}
-// 	to {
-// 		transform: translate(100px, 100px);
-// 	}
-// }
+<style scoped>
+/* Keyframes for smooth, continuous scroll */
+@keyframes horizontal-scroll {
+	0% {
+		transform: translateX(-100%);
+	}
+	100% {
+		transform: translateX(10%);
+	}
+}
+
 .logos-comp {
+	overflow: hidden;
+	white-space: nowrap;
+	width: 100%; /* Set width of container */
+}
+
+.logo-wrapper {
 	display: flex;
 	gap: 25px;
-	overflow-x: auto;
-
-	//animation-name: animation-css;
-	//animation-duration: 3s;
-	//animation-direction: alternate;
-	//animation-iteration-count: infinite;
+	animation: horizontal-scroll 20s linear infinite;
+	width: 200%; /* Keeps the wrapper width adaptive to content */
 }
-.carousel-images{
+
+.carousel-images {
 	max-height: 64px;
 	max-width: 64px;
+	display: inline-block;
 }
-// .logos-comp {
-// 	display: flex;
-// 	justify-content: space-between;
-// 	align-items: center;
-// 	@media only screen and (max-width: 600px) {
-// 		display: grid;
-// 		grid-template-columns: 1fr 1fr 1fr 1fr;
-// 		gap: 20px;
-// 		padding: 0px 8px;
-// 	}
-// 	img {
-// 		@media only screen and (max-width: 600px) {
-// 			max-width: 50px;
-// 		}
-// 	}
-// }
 </style>
