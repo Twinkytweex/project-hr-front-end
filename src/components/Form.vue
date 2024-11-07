@@ -55,16 +55,15 @@
 
 				/>
 				<div v-for="f in files" :key="f.name">
-					{{ f.name }} ({{f.type}}) -
-					{{ (f.size / 1024).toFixed(2) }}KB
+`					{{ f.name }} ({{f.type}}) -
+`					{{ (f.size / 1024).toFixed(2) }}KB
 				</div>
 <!--				<div v-for="f in files" :key="f.name">{{ f.name }}</div>-->
 				<img class="upload-image" :src="upload" alt="" />
 				<label for="id_upload_cv">
 					<span class="upload-image-title"
 						>ჩააგდეთ რეზიუმე ან
-						<span class="title-upload">ატვირთეთ ფაილი</span></span
-					>
+						<span class="title-upload">ატვირთეთ ფაილი</span></span>
 				</label>
 			</div>
 			<div class="terms-con">
@@ -193,6 +192,8 @@ const submitForm = async () => {
 			// formDataToSend.append('file', inpUpload.value.files[0]);
 			var numb = 0
 			Array.from(inpUpload.value.files).forEach((file, index) => {
+				console.log('sad gamodis es ?',index)
+
 				formDataToSend.append(`file${index + 1}`, file);
 				numb += 1
 			});

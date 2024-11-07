@@ -82,7 +82,6 @@ async function fetchData(id) {
         let foundItem = null;
         for (let i = 0; i < filteredData.length; i++) {
             if (String(filteredData[i].id) === id) {
-				console.log(filteredData[i])
                 foundItem = filteredData[i];
                 break;
             }
@@ -103,8 +102,6 @@ async function fetchData(id) {
         } else {
             console.error('Vacancy with ID', id, 'not found');
         }
-		console.log('Vacancy SUCCESS')
-
     } catch (error) {
         console.error('Error fetching data:', error);
     }

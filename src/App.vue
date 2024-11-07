@@ -39,7 +39,6 @@ async function fetchData() {
 		// const response = await axios.get('http://172.18.0.1:8069/show_company_img');
 		const response = await axios.get('https://hr.palitra.ge/show_company_img');
 		pages.value = response.data;
-		console.log('APP SUCCESS', pages)
 	} catch (error) {
 		console.error('Error fetching data:', error);
 	}

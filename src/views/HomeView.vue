@@ -120,7 +120,6 @@ function updateSearchTerm(term) {
 
 // Filter cards based on search term
 const filteredCards = computed(() => {
-	console.log('datrigerda saertod?')
 	return cards.value.filter(card =>
 		searchTerm.value === '' || card.title_name.toLowerCase().includes(searchTerm.value.toLowerCase())
 	);
