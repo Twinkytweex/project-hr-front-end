@@ -5,7 +5,7 @@
 				<div class="forms-input-cont">
 					<div class="forms-input-title">
 						<label for="validationTooltip01" class="forms-name form-label"
-							>სახელი
+						>სახელი
 						</label>
 						<span class="red">*</span>
 					</div>
@@ -42,7 +42,37 @@
 			</div>
 			<label class="forms-name">რეზიუმე </label>
 			<span class="red">*</span>
-			<div class="upload-image-input" name="img">
+			<!--			<div class="upload-image-input" name="img">-->
+			<!--				<input-->
+			<!--					required-->
+			<!--					ref="inpUpload"-->
+			<!--					type="file"-->
+			<!--					name="document"-->
+			<!--					hidden-->
+			<!--					id="id_upload_cv"-->
+			<!--					multiple-->
+			<!--					@change="OnFileChange"-->
+
+			<!--				/>-->
+			<!--				<div v-for="f in files" :key="f.name">-->
+			<!--`					{{ f.name }} ({{f.type}}) - -->
+			<!--`					{{ (f.size / 1024).toFixed(2) }}KB-->
+			<!--				</div>-->
+			<!--&lt;!&ndash;				<div v-for="f in files" :key="f.name">{{ f.name }}</div>&ndash;&gt;-->
+			<!--				<img class="upload-image" :src="upload" alt="" />-->
+			<!--				<label for="id_upload_cv">-->
+			<!--					<span class="upload-image-title"-->
+			<!--						>ჩააგდეთ რეზიუმე ან-->
+			<!--						<span class="title-upload">ატვირთეთ ფაილი</span></span>-->
+			<!--				</label>-->
+			<!--			</div>-->
+			<div
+				class="upload-image-input"
+				name="img"
+				@dragover.prevent="onDragOver"
+				@dragleave="onDragLeave"
+				@drop.prevent="onFileDrop"
+			>
 				<input
 					required
 					ref="inpUpload"
@@ -52,18 +82,16 @@
 					id="id_upload_cv"
 					multiple
 					@change="OnFileChange"
-
 				/>
 				<div v-for="f in files" :key="f.name">
-`					{{ f.name }} ({{f.type}}) -
-`					{{ (f.size / 1024).toFixed(2) }}KB
+					{{ f.name }} ({{f.type}}) - {{ (f.size / 1024).toFixed(2) }}KB
 				</div>
-<!--				<div v-for="f in files" :key="f.name">{{ f.name }}</div>-->
 				<img class="upload-image" :src="upload" alt="" />
 				<label for="id_upload_cv">
-					<span class="upload-image-title"
-						>ჩააგდეთ რეზიუმე ან
-						<span class="title-upload">ატვირთეთ ფაილი</span></span>
+    <span class="upload-image-title">
+      ჩააგდეთ რეზიუმე ან
+      <span class="title-upload">ატვირთეთ ფაილი</span>
+    </span>
 				</label>
 			</div>
 			<div class="terms-con">
@@ -71,26 +99,26 @@
 					<input class="checkbox" type="checkbox" v-model="formData.check_box"/>
 					<div class="check-text-mobile">
 						<span class="check-text"
-							>ვეთანხმები ჩემი პირადი მონაცემების
+						>ვეთანხმები ჩემი პირადი მონაცემების
 						</span>
 						<span class="check-text">
 							დამუშავებას <span class="red">*</span></span
 						>
 					</div>
 					<span class="check-text none-mobile"
-						>ვეთანხმები ჩემი პირადი მონაცემების დამუშავებას
+					>ვეთანხმები ჩემი პირადი მონაცემების დამუშავებას
 					</span>
 					<span class="none-mobile red">*</span>
 				</div>
 				<span class="check-accept"
-					>ვეთანხმები ჩემ მიერ მოწოდებული პირადი მონაცემების
+				>ვეთანხმები ჩემ მიერ მოწოდებული პირადი მონაცემების
 					დამუშავებას პალიტრა ჰოლდინგის ან-და მისი შვილობილი
 					კომპანიების მიერ, პოტენციური დასაქმების მიზნით. ვაცნობიერებ,
 					რომ ჩემ მიერ მოწოდებული პირადი ინფორმაცია შესაძლოა შენახული
 					იყოს მაქსიმუმ 2 წლის ვადით, ხოლო მოგვიანებით წაიშლება.</span
 				>
 				<span class="check-accept"
-					>კომპანიის ბაზიდან მონაცემების ვადაზე ადრე წასაშლელად
+				>კომპანიის ბაზიდან მონაცემების ვადაზე ადრე წასაშლელად
 					კანდიდატმა უნდა
 					<br />
 					მოგვმართოს ელ. ფოსტაზე:
@@ -99,12 +127,12 @@
 			</div>
 			<div class="confirm-cont">
 				<Button @click="submitForm"> განაცხადის გაგზავნა </Button>
-<!--				<router-link to='success'>-->
-<!--					<Button @click="submitForm"> განაცხადის გაგზავნა </Button>-->
-<!--				</router-link>-->
-<!--				<router-link :to="formData.route">-->
-<!--					<Button @click="submitForm"> განაცხადის გაგზავნა </Button>-->
-<!--				</router-link>-->
+				<!--				<router-link to='success'>-->
+				<!--					<Button @click="submitForm"> განაცხადის გაგზავნა </Button>-->
+				<!--				</router-link>-->
+				<!--				<router-link :to="formData.route">-->
+				<!--					<Button @click="submitForm"> განაცხადის გაგზავნა </Button>-->
+				<!--				</router-link>-->
 			</div>
 		</div>
 	</div>
@@ -192,7 +220,6 @@ const submitForm = async () => {
 			// formDataToSend.append('file', inpUpload.value.files[0]);
 			var numb = 0
 			Array.from(inpUpload.value.files).forEach((file, index) => {
-				console.log('sad gamodis es ?',index)
 
 				formDataToSend.append(`file${index + 1}`, file);
 				numb += 1
@@ -218,6 +245,29 @@ const submitForm = async () => {
 	} catch (error) {
         console.error('Error submitting form:', error);
     }
+};
+
+// Handle drag-over event (to show feedback)
+const onDragOver = (event) => {
+  event.currentTarget.classList.add('dragging');
+};
+
+// Handle drag-leave event (to remove feedback)
+const onDragLeave = (event) => {
+  event.currentTarget.classList.remove('dragging');
+};
+
+// Handle drop event
+const onFileDrop = (event) => {
+  const droppedFiles = Array.from(event.dataTransfer.files);
+  files.value = [...files.value, ...droppedFiles.map((f) => ({
+    name: f.name,
+    type: f.type,
+    size: f.size,
+  }))];
+
+  // Optionally, you can update the input element's file list (if needed)
+  inpUpload.value.files = event.dataTransfer.files;
 };
 
 onMounted(() => {});
@@ -381,5 +431,9 @@ onMounted(() => {});
 			font-size: 12px;
 		}
 	}
+}
+.upload-image-input.dragging {
+  border: 2px dashed #007bff;
+  background-color: rgba(0, 123, 255, 0.1);
 }
 </style>
