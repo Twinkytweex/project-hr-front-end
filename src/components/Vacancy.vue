@@ -15,17 +15,16 @@
 			<div class="line"></div>
 			<Card vacancy_layout :card="card" />
 
-			<span v-if="card.work_experience" class="vacancy-description-small">ვაკანსიის აღწერილობა</span>
-			<div v-if="card.work_experience" class="vacancy-description">
+			<div class="vacancy-description">
 				{{card.work_experience}}
 			</div>
 
 			<div class="vacancy-conditions">
-						<span v-if="card.main_duty && card.main_duty.length > 0" class="vacancy-actions">მოვალეობები</span>
+				<span v-if="card.main_duty && card.main_duty.length > 0" class="vacancy-actions">ფუნქცია მოვალეობები</span>
 				<ul>
 					<li v-for="item in card.main_duty" :key="item">{{ item }}</li>
 				</ul>
-				<span v-if="card.required_knowledge && card.required_knowledge.length > 0" class="vacancy-actions vacancy-requests">მოთხოვნები</span>
+				<span v-if="card.required_knowledge && card.required_knowledge.length > 0" class="vacancy-actions vacancy-requests">საკვალიფიკაციო მოთხოვნები</span>
 				<ul>
 					<li v-for="item in card.required_knowledge" :key="item">{{ item }}</li>
 				</ul>
