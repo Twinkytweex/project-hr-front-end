@@ -15,8 +15,8 @@
 			<div class="line"></div>
 			<Card vacancy_layout :card="card" />
 
-			<span class="vacancy-description-small">ვაკანსიის აღწერილობა</span>
-			<div class="vacancy-description">
+			<span v-if="card.work_experience" class="vacancy-description-small">ვაკანსიის აღწერილობა</span>
+			<div v-if="card.work_experience" class="vacancy-description">
 				{{card.work_experience}}
 			</div>
 
