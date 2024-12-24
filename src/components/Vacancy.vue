@@ -20,7 +20,7 @@
 			</div>
 
 			<div class="vacancy-conditions">
-				<span v-if="card.required_knowledge && card.required_knowledge.length > 0" class="vacancy-actions vacancy-requests">ფუნქცია მოვალეობები</span>
+				<span v-if="card.required_knowledge && card.required_knowledge.length > 0" class="vacancy-actions vacancy-requests">ფუნქცია-მოვალეობები</span>
 				<ul>
 					<li v-for="item in card.required_knowledge" :key="item">{{ item }}</li>
 				</ul>
