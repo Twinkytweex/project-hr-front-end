@@ -14,6 +14,8 @@
 			</div>
 			<div class="line"></div>
 			<Card vacancy_layout :card="card" />
+
+			<span class="vacancy-description-small">ვაკანსიის აღწერილობა</span>
 			<div class="vacancy-description">
 				{{card.work_experience}}
 			</div>
@@ -27,6 +29,11 @@
 				<ul>
 					<li v-for="item in card.required_skills" :key="item">{{ item }}</li>
 				</ul>
+				<span class="vacancy-actions vacancy-requests">პიროვნული მახასიათებლები</span>
+				<ul>
+					<li v-for="item in card.required_knowledge" :key="item">{{ item }}</li>
+				</ul>
+
 				<span class="vacancy-actions vacancy-condit">პირობები</span>
 				<ul>
 					<li v-if="card.time_shift">{{card.time_shift}}</li>
@@ -215,6 +222,18 @@ onMounted(fetchData);
 		@media only screen and (max-width: 600px) {
 			font-size: 14px;
 		}
+	}
+}
+.vacancy-description-small {
+	padding: 35px;
+	color: #0063bf;
+	font-family: var(--font-DejaVu);
+	font-size: 18px;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	@media only screen and (max-width: 600px) {
+		font-size: 14px;
 	}
 }
 </style>
