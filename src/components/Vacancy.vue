@@ -20,14 +20,15 @@
 			</div>
 
 			<div class="vacancy-conditions">
-				<span v-if="card.main_duty && card.main_duty.length > 0" class="vacancy-actions">ფუნქცია მოვალეობები</span>
-				<ul>
-					<li v-for="item in card.main_duty" :key="item">{{ item }}</li>
-				</ul>
-				<span v-if="card.required_knowledge && card.required_knowledge.length > 0" class="vacancy-actions vacancy-requests">საკვალიფიკაციო მოთხოვნები</span>
+				<span v-if="card.required_knowledge && card.required_knowledge.length > 0" class="vacancy-actions vacancy-requests">ფუნქცია მოვალეობები</span>
 				<ul>
 					<li v-for="item in card.required_knowledge" :key="item">{{ item }}</li>
 				</ul>
+				<span v-if="card.main_duty && card.main_duty.length > 0" class="vacancy-actions">საკვალიფიკაციო მოთხოვნები</span>
+				<ul>
+					<li v-for="item in card.main_duty" :key="item">{{ item }}</li>
+				</ul>
+
 				<span v-if="card.required_skills && card.required_skills.length > 0" class="vacancy-actions vacancy-requests">პიროვნული მახასიათებლები</span>
 				<ul>
 					<li v-for="item in card.required_skills" :key="item">{{ item }}</li>
