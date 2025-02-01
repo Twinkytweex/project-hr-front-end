@@ -102,6 +102,7 @@ async function fetchData(id) {
                 main_duty: foundItem.main_duty,
 				bonus: foundItem.bonus,
 				wage_net: foundItem.wage_net,
+				wage_gross: foundItem.wage_gross,
 				wage_agreement: foundItem.wage_agreement,
 				time_shift: foundItem.time_shift,
 				working_hours: foundItem.working_hours,
