@@ -38,7 +38,7 @@
 				<ul>
 					<li v-if="card.time_shift">{{card.time_shift}}</li>
 					<li v-if="card.working_hours">{{card.working_hours}}</li>
-					<li v-if="card.wage_net">ანაზღაურება {{card.wage_net}} ლარი</li>
+					<li v-if="card.wage_gross">ანაზღაურება {{card.wage_gross}} ლარი</li>
 					<li v-if="card.wage_agreed">ანაზღაურება შეთანხმებით</li>
 					<li v-if="card.bonus">ბონუსი</li>
 				</ul>
@@ -71,6 +71,7 @@ const card = computed(() => {
 		main_duty: vacancy.value.main_duty,
 		bonus: vacancy.value.bonus,
 		wage_net: vacancy.value.wage_net,
+		wage_gross: vacancy.value.wage_gross,
 		wage_agreed: vacancy.value.wage_agreement,
 		time_shift: vacancy.value.time_shift,
 		working_hours: vacancy.value.working_hours
