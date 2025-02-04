@@ -38,7 +38,7 @@
 				<ul>
 					<li v-if="card.time_shift">{{card.time_shift}}</li>
 					<li v-if="card.working_hours">{{card.working_hours}}</li>
-					<li v-if="card.wage_gross">ანაზღაურება {{card.wage_gross}} ლარი</li>
+					<li v-if="card.wage_gross">ანაზღაურება {{card.wage_gross}}</li>
 					<li v-if="card.wage_agreed">ანაზღაურება შეთანხმებით</li>
 					<li v-if="card.bonus">ბონუსი</li>
 				</ul>
