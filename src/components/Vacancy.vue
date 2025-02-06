@@ -16,31 +16,33 @@
 			<Card vacancy_layout :card="card" />
 
 			<div class="vacancy-description">
-				{{card.work_experience}}
+				<div v-html="card.work_experience"></div>
+
+<!--				{{card.work_experience}}-->
 			</div>
 
 			<div class="vacancy-conditions">
 				<span v-if="card.required_knowledge && card.required_knowledge.length > 0" class="vacancy-actions vacancy-requests">ფუნქცია-მოვალეობები</span>
 				<ul>
-					<li v-for="item in card.required_knowledge" :key="item">{{ item }}</li>
+					<li v-for="item in card.required_knowledge" :key="item" v-html="item"></li>
 				</ul>
 				<span v-if="card.main_duty && card.main_duty.length > 0" class="vacancy-actions">საკვალიფიკაციო მოთხოვნები</span>
 				<ul>
-					<li v-for="item in card.main_duty" :key="item">{{ item }}</li>
+					<li v-for="item in card.main_duty" :key="item"  v-html="item"></li>
 				</ul>
 
 				<span v-if="card.required_skills && card.required_skills.length > 0" class="vacancy-actions vacancy-requests">პიროვნული მახასიათებლები</span>
 				<ul>
-					<li v-for="item in card.required_skills" :key="item">{{ item }}</li>
+					<li v-for="item in card.required_skills" :key="item"  v-html="item"></li>
 				</ul>
 
 				<span class="vacancy-actions vacancy-condit">პირობები</span>
 				<ul>
-					<li v-if="card.time_shift">{{card.time_shift}}</li>
-					<li v-if="card.working_hours">{{card.working_hours}}</li>
-					<li v-if="card.wage_gross">ანაზღაურება {{card.wage_gross}}</li>
+					<li v-if="card.time_shift"  v-html="card.time_shift"></li>
+					<li v-if="card.working_hours" v-html="card.working_hours"></li>
+					<li v-if="card.wage_gross" v-html="card.wage_gross"></li>
 					<li v-if="card.wage_agreed">ანაზღაურება შეთანხმებით</li>
-					<li v-if="card.bonus">ბონუსი</li>
+					<li v-if="card.bonus" v-html="card.bonus"></li>
 				</ul>
 				<Button icon="fill" @click="fillForm">
 					განაცხადის შევსება
