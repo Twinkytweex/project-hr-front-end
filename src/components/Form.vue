@@ -161,18 +161,26 @@ const formData = ref({
 	indexing: ''
 });
 
-	const OnFileChange = () => {
-		files.value = [];
-		files.value = Array.from(inpUpload.value.files).map((f) => ({
-			name: f.name,
-			type: f.type,
-			size: f.size,
-			icon: f.icon
-		}));
+const OnFileChange = () => {
+	files.value = [];
+	const selectedFiles = Array.from(inpUpload.value.files);
+	for (const file of selectedFiles) {
+		if (file.name.length > 30) {
+			alert(`ფაილისი სახელი ცდება დაშვებულ ზომას! სახელი არ უნდა აღემატებოდეს 30 სიმბოლოს!`);
+			inpUpload.value.value = ''; // Clear input
+			return; // Stop further processing
+		}
+	}
+	files.value = Array.from(inpUpload.value.files).map((f) => ({
+		name: f.name,
+		type: f.type,
+		size: f.size,
+		icon: f.icon
+	}));
 
-		// Clear the input element so the same file can be re-uploaded if needed
-		inpUpload.value = '';
-	};
+	// Clear the input element so the same file can be re-uploaded if needed
+	inpUpload.value = '';
+};
 
 const showAlert = () => {
 	alert('გთხოვთ ვაკანსიის გამოსაგზავნად, შეავსოთ ყველა სავალდებულო ველი!')
@@ -188,14 +196,14 @@ const showAlertEmail = () => {
 
 // Email validation function
 function validateEmail(email) {
-    const emailRegex = /^[a-zA-Z]+[a-zA-Z0-9._%+-]*@[a-zA-Z]+\.[a-zA-Z]{2,}$/; // Basic email validation regex
-    return emailRegex.test(email);
+	const emailRegex = /^[a-zA-Z]+[a-zA-Z0-9._%+-]*@[a-zA-Z]+\.[a-zA-Z]{2,}$/; // Basic email validation regex
+	return emailRegex.test(email);
 }
 
 // Phone number validation function
 function validatePhoneNumber(phoneNumber) {
-    const phoneRegex = /^\d{9}$/; // Regex to check if phone number is exactly 9 digits
-    return phoneRegex.test(phoneNumber);
+	const phoneRegex = /^\d{9}$/; // Regex to check if phone number is exactly 9 digits
+	return phoneRegex.test(phoneNumber);
 }
 
 const submitForm = async () => {
@@ -244,31 +252,58 @@ const submitForm = async () => {
 
 
 	} catch (error) {
-        console.error('Error submitting form:', error);
-    }
+		console.error('Error submitting form:', error);
+	}
 };
 
 // Handle drag-over event (to show feedback)
 const onDragOver = (event) => {
-  event.currentTarget.classList.add('dragging');
+	event.currentTarget.classList.add('dragging');
 };
 
 // Handle drag-leave event (to remove feedback)
 const onDragLeave = (event) => {
-  event.currentTarget.classList.remove('dragging');
+	event.currentTarget.classList.remove('dragging');
 };
 
 // Handle drop event
-const onFileDrop = (event) => {
-  const droppedFiles = Array.from(event.dataTransfer.files);
-  files.value = [...files.value, ...droppedFiles.map((f) => ({
-    name: f.name,
-    type: f.type,
-    size: f.size,
-  }))];
+// const onFileDrop = (event) => {
+// 	const droppedFiles = Array.from(event.dataTransfer.files);
+// 	files.value = [...files.value, ...droppedFiles.map((f) => ({
+// 		name: f.name,
+// 		type: f.type,
+// 		size: f.size,
+// 	}))];
+//
+// 	// Optionally, you can update the input element's file list (if needed)
+// 	inpUpload.value.files = event.dataTransfer.files;
+// };
 
-  // Optionally, you can update the input element's file list (if needed)
-  inpUpload.value.files = event.dataTransfer.files;
+const onFileDrop = (event) => {
+    event.preventDefault(); // Prevent default browser behavior
+
+    const droppedFiles = Array.from(event.dataTransfer.files);
+    const validFiles = [];
+
+    for (const file of droppedFiles) {
+        if (file.name.length > 30) {
+            alert(`ფაილისი სახელი ცდება დაშვებულ ზომას! სახელი არ უნდა აღემატებოდეს 30 სიმბოლოს!`);
+            return; // Stop further processing
+        }
+        validFiles.push(file);
+    }
+
+    // Update Vue state
+    files.value = [...files.value, ...validFiles.map((f) => ({
+        name: f.name,
+        type: f.type,
+        size: f.size,
+    }))];
+
+    // Update the input element with dropped files
+    const dataTransfer = new DataTransfer();
+    validFiles.forEach(file => dataTransfer.items.add(file));
+    inpUpload.value.files = dataTransfer.files;
 };
 
 onMounted(() => {});
@@ -434,7 +469,7 @@ onMounted(() => {});
 	}
 }
 .upload-image-input.dragging {
-  border: 2px dashed #007bff;
-  background-color: rgba(0, 123, 255, 0.1);
+	border: 2px dashed #007bff;
+	background-color: rgba(0, 123, 255, 0.1);
 }
 </style>
